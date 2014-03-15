@@ -2,12 +2,38 @@ package de.fatochs.ebs.maze;
 
 /**
  * Type a Tile can have
+ * 
  * @author Frotty
- *
  */
-public enum TileType 
+public enum TileType
 {
-	WALKABLE,
-	UNWALKABLE,
-	ICE
+	WALKABLE()
+	{
+		@Override
+		public void test()
+		{
+			// TODO Auto-generated method stub
+
+		}
+	},
+	UNWALKABLE()
+	{
+		@Override
+		public void test()
+		{
+			// TODO Auto-generated method stub
+
+		}
+	},
+	ICE()
+	{
+		@Override
+		public void test()
+		{
+			// TODO Auto-generated method stub
+
+		}
+	};
+
+	public abstract void test();
 }
