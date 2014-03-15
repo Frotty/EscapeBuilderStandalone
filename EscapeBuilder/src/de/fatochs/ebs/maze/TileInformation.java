@@ -12,7 +12,9 @@ import de.fatochs.ebs.EBGame;
  */
 public enum TileInformation
 {
-	
+	/**
+	 * The Escaper can walk normally on here
+	 */
 	WALKABLE(EBGame.textureAtlas.findRegion("blub"))
 	{
 		
@@ -23,6 +25,9 @@ public enum TileInformation
 
 		}
 	},
+	/**
+	 * The Escaper dies when walking on here
+	 */
 	UNWALKABLE(EBGame.textureAtlas.findRegion("blub"))
 	{
 		@Override
@@ -32,7 +37,22 @@ public enum TileInformation
 
 		}
 	},
-	ICE(EBGame.textureAtlas.findRegion("blub"))
+	/**
+	 * The escaper slides on here, but can control his momentum/rotation
+	 */
+	CONTROLLABLEICE(EBGame.textureAtlas.findRegion("blub"))
+	{
+		@Override
+		public void test()
+		{
+			// TODO Auto-generated method stub
+
+		}
+	},
+	/**
+	 * The escaper slides on here and loses control until he enters another tile
+	 */
+	UNCONTROLLABLEICE(EBGame.textureAtlas.findRegion("blub"))
 	{
 		@Override
 		public void test()

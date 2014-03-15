@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
+import de.fatochs.ebs.units.Escaper;
 import de.fatochs.engine.core.entities.SpriteEntity;
 
 public class EBGame implements ApplicationListener 
@@ -20,6 +21,7 @@ public class EBGame implements ApplicationListener
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture texture;
+	public static Escaper escaper;
 	SpriteEntity se;
 	@Override
 	public void create() 

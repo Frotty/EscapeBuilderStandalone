@@ -10,33 +10,33 @@ import de.fatochs.engine.core.entities.SpriteEntity;
 
 /**
  * Player-controlled Escaper that moves through the maze
+ * 
  * @author Frotty
- *
+ * 
  */
 public class Escaper extends SpriteEntity
 {
 	/**
 	 * Current Maze the escaper is in.
 	 */
-	Maze currentMaze;
-	
+	Maze	currentMaze;
+
 	public Escaper(Vector2 position)
 	{
 		super(position);
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	/**
 	 * Checks the current Tile the Escaper stands on and acts accordingly
 	 */
 	@Override
-	public void update() 
+	public void update()
 	{
 		Tile currentTile = currentMaze.getTileFromPos(position);
 		switch (currentTile.info)
 		{
-		case ICE:
+		case CONTROLLABLEICE:
 			//TODO
 			break;
 		case UNWALKABLE:
@@ -45,16 +45,19 @@ public class Escaper extends SpriteEntity
 			position.add(velocity);
 		default:
 			break;
-		
+
 		}
 		super.update();
 
 	}
+
 	/**
-	 * Kills the Escaper 
+	 * Kills the Escaper
 	 */
-	public void kill() 
+	public void kill()
 	{
-		
+
 	}
+
+	
 }
