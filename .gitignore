@@ -21,3 +21,4 @@ local.properties
 
 # PDT-specific
 .buildpath
+EscapeBuilder-android/gen/de/frotty/ebs/BuildConfig.java
