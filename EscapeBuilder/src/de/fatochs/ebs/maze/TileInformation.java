@@ -27,6 +27,7 @@ public enum TileInformation
 	 * The escaper slides on here and loses control until he enters another tile
 	 */
 	UNCONTROLLABLE_ICE(EBGame.textureAtlas.findRegion("blub"));
+
 	TileInformation(final TextureRegion region)
 	{
 		this.region = region;
