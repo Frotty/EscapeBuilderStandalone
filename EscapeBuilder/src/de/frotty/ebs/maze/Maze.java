@@ -1,6 +1,6 @@
 package de.frotty.ebs.maze;
 
-import de.frotty.ebs.datastructures.BiHashMap;
+import de.fatochs.engine.core.datastructures.BiHashMap;
 
 /**
  * The "level" built from tiles and objects

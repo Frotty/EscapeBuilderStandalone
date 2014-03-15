@@ -1,4 +1,4 @@
-package de.frotty.ebs.entity;
+package de.fatochs.engine.core.entities;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

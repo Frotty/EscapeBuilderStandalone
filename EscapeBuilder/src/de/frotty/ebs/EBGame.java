@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-import de.frotty.ebs.entity.SpriteEntity;
+import de.fatochs.engine.core.entities.SpriteEntity;
 
 public class EBGame implements ApplicationListener {
 	private OrthographicCamera camera;
