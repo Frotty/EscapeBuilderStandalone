@@ -4,25 +4,85 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public class SpriteEntity extends Entity2D 
+/**
+ * @author pinkie.swirl@mailbox.org
+ */
+public class SpriteEntity extends Entity2D
 {
-	public Sprite sprite;
-	
-	public SpriteEntity(Vector2 position) 
+	/**
+	 * The drawable {@link com.badlogic.gdx.graphics.g2d.Sprite Sprite}.
+	 */
+	protected Sprite	sprite;
+
+	/**
+	 * Creates an new sprite entity with the given sprite.
+	 * <p>
+	 * The position and velocity are initialized to (0, 0).
+	 * 
+	 * @param sprite
+	 *            the sprite
+	 */
+	public SpriteEntity(Sprite sprite)
 	{
-		this.position = position;
+		super();
+
+		this.sprite = sprite;
 	}
-	
-	public void render(SpriteBatch batch) 
+
+	/**
+	 * Creates a new sprite entity with the given sprite and position.
+	 * <p>
+	 * The velocity is initialized to (0, 0).
+	 * 
+	 * @param sprite
+	 *            the sprite
+	 * @param pos
+	 *            the position
+	 */
+	public SpriteEntity(Sprite sprite, Vector2 pos)
+	{
+		super(pos);
+
+		this.sprite = sprite;
+	}
+
+	/**
+	 * Creates a new sprite entity with the given sprite, position and velocity.
+	 * 
+	 * @param sprite
+	 *            the sprite
+	 * @param pos
+	 *            the position
+	 * @param vel
+	 *            the velocity
+	 */
+	public SpriteEntity(Sprite sprite, Vector2 pos, Vector2 vel)
+	{
+		super(pos, vel);
+
+		this.sprite = sprite;
+	}
+
+	/**
+	 * Draws the {@code sprite} with the given sprite batch.
+	 * 
+	 * @param batch
+	 *            the sprite batch
+	 */
+	public void render(final SpriteBatch batch)
 	{
 		sprite.draw(batch);
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see de.fatochs.engine.core.entities.Entity2D#update()
+	 */
 	@Override
-	public void update() 
+	public void update()
 	{
-		// TODO Auto-generated method stub
-
+		super.update();
+		
+		sprite.setPosition(position.x, position.y);
 	}
-
 }
