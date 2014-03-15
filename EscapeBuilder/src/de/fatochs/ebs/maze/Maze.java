@@ -32,16 +32,13 @@ public class Maze
 		return json.fromJson(Maze.class, fileHandle);
 	}
 
-	public String save(boolean prettyPrint)
+	public String save(final boolean prettyPrint)
 	{
-		Json json = new Json();
+		final Json json = new Json();
 		if (prettyPrint)
-		{
 			return json.toJson(this, Maze.class);
-		} else
-		{
+		else
 			return json.prettyPrint(this);
-		}
 	}
 
 	public void start()

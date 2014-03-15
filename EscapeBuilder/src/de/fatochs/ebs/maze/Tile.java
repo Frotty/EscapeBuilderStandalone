@@ -11,9 +11,8 @@ public class Tile extends SpriteEntity
 
 	public Tile(final Vector2 position, final TileInformation info)
 	{
-		super(position);
+		super(new Sprite(info.region), position);
 		this.info = info;
-		sprite = new Sprite(info.region);
 	}
 
 }

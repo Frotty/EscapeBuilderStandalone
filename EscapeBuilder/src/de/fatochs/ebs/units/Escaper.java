@@ -1,5 +1,6 @@
 package de.fatochs.ebs.units;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 import de.fatochs.ebs.maze.Maze;
@@ -20,7 +21,7 @@ public class Escaper extends SpriteEntity
 
 	public Escaper(final Vector2 position)
 	{
-		super(position);
+		super(new Sprite(), position); // FIXME add correct sprite
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,7 +34,7 @@ public class Escaper extends SpriteEntity
 		final Tile currentTile = currentMaze.getTileFromPos(position);
 		switch (currentTile.info)
 		{
-		case CONTROLLABLEICE:
+		case CONTROLLABLE_ICE:
 			//TODO
 			break;
 		case UNWALKABLE:
