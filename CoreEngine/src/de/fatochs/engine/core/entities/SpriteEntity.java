@@ -85,4 +85,18 @@ public class SpriteEntity extends Entity2D
 
 		sprite.setPosition(position.x, position.y);
 	}
+
+	@Override
+	public void setX(float x)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setY(float x)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

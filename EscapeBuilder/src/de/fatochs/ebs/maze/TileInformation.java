@@ -14,19 +14,19 @@ public enum TileInformation
 	/**
 	 * The Escaper can walk normally on here
 	 */
-	WALKABLE(EBGame.textureAtlas.findRegion("blub")),
+	WALKABLE(EBGame.textureAtlas.findRegion("Walkable")),
 	/**
 	 * The Escaper dies when walking on here
 	 */
-	UNWALKABLE(EBGame.textureAtlas.findRegion("blub")),
+	UNWALKABLE(EBGame.textureAtlas.findRegion("Unwalkable")),
 	/**
 	 * The escaper slides on here, but can control his momentum/rotation
 	 */
-	CONTROLLABLE_ICE(EBGame.textureAtlas.findRegion("blub")),
+	CONTROLLABLE_ICE(EBGame.textureAtlas.findRegion("Ice")),
 	/**
 	 * The escaper slides on here and loses control until he enters another tile
 	 */
-	UNCONTROLLABLE_ICE(EBGame.textureAtlas.findRegion("blub"));
+	UNCONTROLLABLE_ICE(EBGame.textureAtlas.findRegion("Ice"));
 
 	TileInformation(final TextureRegion region)
 	{
