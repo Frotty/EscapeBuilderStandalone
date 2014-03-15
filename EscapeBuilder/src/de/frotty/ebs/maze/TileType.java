@@ -5,7 +5,8 @@ package de.frotty.ebs.maze;
  * @author Frotty
  *
  */
-public enum TileType {
+public enum TileType 
+{
 	WALKABLE,
 	UNWALKABLE,
 	ICE

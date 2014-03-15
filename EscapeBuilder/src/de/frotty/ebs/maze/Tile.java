@@ -9,10 +9,12 @@ import de.fatochs.engine.core.entities.SpriteEntity;
  * @author Frotty
  *
  */
-public class Tile extends SpriteEntity{
+public class Tile extends SpriteEntity
+{
 	TileType type;
 
-	public Tile(Vector2 position) {
+	public Tile(Vector2 position) 
+	{
 		super(position);
 	}
 
