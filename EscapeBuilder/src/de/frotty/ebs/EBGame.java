@@ -9,13 +9,15 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
+
+import de.frotty.ebs.entity.SpriteEntity;
 
 public class EBGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture texture;
-	private Sprite sprite;
-	
+	SpriteEntity se;
 	@Override
 	public void create() {		
 		float w = Gdx.graphics.getWidth();
@@ -28,11 +30,11 @@ public class EBGame implements ApplicationListener {
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
-		
-		sprite = new Sprite(region);
-		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
-		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		se = new SpriteEntity(new Vector2(0,0));
+		se.sprite = new Sprite(region);
+		se.sprite.setSize(0.9f, 0.9f * se.sprite.getHeight() / se.sprite.getWidth());
+		se.sprite.setOrigin(se.sprite.getWidth()/2, se.sprite.getHeight()/2);
+		se.sprite.setPosition(-se.sprite.getWidth()/2, -se.sprite.getHeight()/2);
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class EBGame implements ApplicationListener {
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		sprite.draw(batch);
+		se.render(batch);
 		batch.end();
 	}
 
