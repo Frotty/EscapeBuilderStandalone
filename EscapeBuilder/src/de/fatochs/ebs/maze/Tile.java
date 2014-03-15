@@ -7,17 +7,13 @@ import de.fatochs.engine.core.entities.SpriteEntity;
 
 public class Tile extends SpriteEntity
 {
-	public TileInformation info;
-	public Tile(Vector2 position, TileInformation info)
+	public TileInformation	info;
+
+	public Tile(final Vector2 position, final TileInformation info)
 	{
 		super(position);
 		this.info = info;
 		sprite = new Sprite(info.region);
 	}
-	
-	
-	
 
-	
-	
 }

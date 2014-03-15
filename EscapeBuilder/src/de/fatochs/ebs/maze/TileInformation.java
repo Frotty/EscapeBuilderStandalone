@@ -1,6 +1,5 @@
 package de.fatochs.ebs.maze;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import de.fatochs.ebs.EBGame;
@@ -17,7 +16,7 @@ public enum TileInformation
 	 */
 	WALKABLE(EBGame.textureAtlas.findRegion("blub"))
 	{
-		
+
 		@Override
 		public void test()
 		{
@@ -61,10 +60,12 @@ public enum TileInformation
 
 		}
 	};
-	TileInformation(TextureRegion region)
+	TileInformation(final TextureRegion region)
 	{
 		this.region = region;
 	}
-	public final TextureRegion region;
+
+	public final TextureRegion	region;
+
 	public abstract void test();
 }

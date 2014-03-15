@@ -25,18 +25,8 @@ public class SpriteEntity extends Entity2D
 	public SpriteEntity(final Sprite sprite)
 	{
 		super();
+
 		this.sprite = sprite;
-	}
-	
-	public SpriteEntity(Vector2 position, Sprite sprite) 
-	{
-		super(position);
-		this.sprite = sprite;
-	}
-	
-	public SpriteEntity(Vector2 position) 
-	{
-		super(position);
 	}
 
 	/**
@@ -83,7 +73,6 @@ public class SpriteEntity extends Entity2D
 	{
 		sprite.draw(batch);
 	}
-	
 
 	/*
 	 * (non-Javadoc)
@@ -93,6 +82,7 @@ public class SpriteEntity extends Entity2D
 	public void update()
 	{
 		super.update();
+
 		sprite.setPosition(position.x, position.y);
 	}
 }

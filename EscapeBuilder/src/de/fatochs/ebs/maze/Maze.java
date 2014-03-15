@@ -1,9 +1,7 @@
 package de.fatochs.ebs.maze;
 
-import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
-import javax.management.ListenerNotFoundException;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,7 +15,6 @@ import de.fatochs.ebs.units.Killer;
  * The "level" built from tiles and objects
  * 
  * @author Frotty
- * 
  */
 public class Maze
 {
@@ -29,9 +26,9 @@ public class Maze
 	 */
 	LinkedList<Killer>	killers		= new LinkedList<Killer>();
 
-	public static Maze load(FileHandle fileHandle)
+	public static Maze load(final FileHandle fileHandle)
 	{
-		Json json = new Json();
+		final Json json = new Json();
 		return json.fromJson(Maze.class, fileHandle);
 	}
 
@@ -52,11 +49,11 @@ public class Maze
 
 	}
 
-	public void render(SpriteBatch batch)
+	public void render(final SpriteBatch batch)
 	{
-		for (Tile[] ta : tileMap)
+		for (final Tile[] ta : tileMap)
 		{
-			for (Tile tile : ta)
+			for (final Tile tile : ta)
 			{
 				tile.render(batch);
 			}
@@ -65,10 +62,10 @@ public class Maze
 
 	public void update()
 	{
-		Iterator<Killer> it = killers.iterator();
+		final Iterator<Killer> it = killers.iterator();
 		while (it.hasNext())
 		{
-			Killer col = it.next();
+			final Killer col = it.next();
 			if (col.isTerminated())
 			{
 				it.remove();
@@ -82,7 +79,7 @@ public class Maze
 		}
 	}
 
-	public Tile getTileFromPos(Vector2 position)
+	public Tile getTileFromPos(final Vector2 position)
 	{
 		return tileMap[Math.round(position.x) / tileSize][Math.round(position.y) / tileSize];
 	}

@@ -4,15 +4,12 @@ import com.badlogic.gdx.math.Vector2;
 
 import de.fatochs.ebs.maze.Maze;
 import de.fatochs.ebs.maze.Tile;
-import de.fatochs.ebs.maze.TileInformation;
-import de.fatochs.engine.core.entities.Entity2D;
 import de.fatochs.engine.core.entities.SpriteEntity;
 
 /**
  * Player-controlled Escaper that moves through the maze
  * 
  * @author Frotty
- * 
  */
 public class Escaper extends SpriteEntity
 {
@@ -21,7 +18,7 @@ public class Escaper extends SpriteEntity
 	 */
 	Maze	currentMaze;
 
-	public Escaper(Vector2 position)
+	public Escaper(final Vector2 position)
 	{
 		super(position);
 		// TODO Auto-generated constructor stub
@@ -33,7 +30,7 @@ public class Escaper extends SpriteEntity
 	@Override
 	public void update()
 	{
-		Tile currentTile = currentMaze.getTileFromPos(position);
+		final Tile currentTile = currentMaze.getTileFromPos(position);
 		switch (currentTile.info)
 		{
 		case CONTROLLABLEICE:
@@ -59,5 +56,4 @@ public class Escaper extends SpriteEntity
 
 	}
 
-	
 }
