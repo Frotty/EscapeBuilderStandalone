@@ -6,7 +6,22 @@ package de.fatochs.engine.core.entities;
 import com.badlogic.gdx.math.Vector;
 
 /**
+ * An {@code Entity} is the basic game object.
+ * <p>
+ * The {@code Entity} interface provides a method {@code update} for updating
+ * the entity.
+ * <p>
+ * The {@code Entity} interface provides the methods {@code getPos},
+ * {@code addPos}, {@code setPos}, {@code getVel}, {@code addVel} and
+ * {@code setVel} for position and velocity manipulation. These methods always
+ * return the update position/velocity.
+ * 
+ * @param <VECTOR>
+ *            the {@link com.badlogic.gdx.math.Vector Vector} implementation for
+ *            the position and velocity
  * @author pinkie.swirl@mailbox.org
+ * @see {@link com.badlogic.gdx.math.Vector2 Vector2} (a {@code Vector})
+ * @see {@link com.badlogic.gdx.math.Vector3 Vector3} (a {@code Vector})
  */
 public interface Entity<VECTOR extends Vector<? extends Vector<?>>>
 {
