@@ -7,7 +7,8 @@ import de.frotty.ebs.datastructures.BiHashMap;
  * @author Frotty
  *
  */
-public class Maze {
+public class Maze 
+{
 	BiHashMap<Integer, Integer, Tile> tileMap = new BiHashMap<Integer, Integer, Tile>();
 	
 }

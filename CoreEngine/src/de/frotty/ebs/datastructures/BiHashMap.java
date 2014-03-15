@@ -3,11 +3,13 @@ package de.frotty.ebs.datastructures;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BiHashMap<K1, K2, V> {
+public class BiHashMap<K1, K2, V> 
+{
 
 private final Map<K1, Map<K2, V>> mMap;
 
-public BiHashMap() {
+public BiHashMap() 
+{
     mMap = new HashMap<K1, Map<K2, V>>();
 }
 
@@ -24,11 +26,15 @@ public BiHashMap() {
  * @return the value previously associated with (key1,key2), or <code>null</code> if none
  * @see Map#put(Object, Object)
  */
-public V put(K1 key1, K2 key2, V value) {
+public V put(K1 key1, K2 key2, V value) 
+{
     Map<K2, V> map;
-    if (mMap.containsKey(key1)) {
+    if (mMap.containsKey(key1)) 
+    {
         map = mMap.get(key1);
-    } else {
+    } 
+    else 
+    {
         map = new HashMap<K2, V>();
         mMap.put(key1, map);
     }
@@ -48,10 +54,13 @@ public V put(K1 key1, K2 key2, V value) {
  *         the key
  * @see Map#get(Object)
  */
-public V get(K1 key1, K2 key2) {
-    if (mMap.containsKey(key1)) {
+public V get(K1 key1, K2 key2) 
+{
+    if (mMap.containsKey(key1)) 
+    {
         return mMap.get(key1).get(key2);
-    } else {
+    } else 
+    {
         return null;
     }
 }
@@ -66,11 +75,13 @@ public V get(K1 key1, K2 key2) {
  * @return Returns true if this map contains a mapping for the specified key
  * @see Map#containsKey(Object)
  */
-public boolean containsKeys(K1 key1, K2 key2) {
+public boolean containsKeys(K1 key1, K2 key2) 
+{
     return mMap.containsKey(key1) && mMap.get(key1).containsKey(key2);
 }
 
-public void clear() {
+public void clear() 
+{
     mMap.clear();
 }
 
