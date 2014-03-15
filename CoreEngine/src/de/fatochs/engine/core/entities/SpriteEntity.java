@@ -22,7 +22,7 @@ public class SpriteEntity extends Entity2D
 	 * @param sprite
 	 *            the sprite
 	 */
-	public SpriteEntity(Sprite sprite)
+	public SpriteEntity(final Sprite sprite)
 	{
 		super();
 
@@ -39,7 +39,7 @@ public class SpriteEntity extends Entity2D
 	 * @param pos
 	 *            the position
 	 */
-	public SpriteEntity(Sprite sprite, Vector2 pos)
+	public SpriteEntity(final Sprite sprite, final Vector2 pos)
 	{
 		super(pos);
 
@@ -56,7 +56,7 @@ public class SpriteEntity extends Entity2D
 	 * @param vel
 	 *            the velocity
 	 */
-	public SpriteEntity(Sprite sprite, Vector2 pos, Vector2 vel)
+	public SpriteEntity(final Sprite sprite, final Vector2 pos, final Vector2 vel)
 	{
 		super(pos, vel);
 
@@ -82,7 +82,7 @@ public class SpriteEntity extends Entity2D
 	public void update()
 	{
 		super.update();
-		
+
 		sprite.setPosition(position.x, position.y);
 	}
 }
