@@ -1,21 +1,23 @@
 package de.fatochs.ebs.maze;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 import de.fatochs.engine.core.entities.SpriteEntity;
 
-/**
- * Basic TileClass from which a maze is built.
- * @author Frotty
- *
- */
 public class Tile extends SpriteEntity
 {
-	TileType type;
-
-	public Tile(Vector2 position) 
+	public TileInformation info;
+	public Tile(Vector2 position, TileInformation info)
 	{
 		super(position);
+		this.info = info;
+		sprite = new Sprite(info.region);
 	}
+	
+	
+	
 
+	
+	
 }
