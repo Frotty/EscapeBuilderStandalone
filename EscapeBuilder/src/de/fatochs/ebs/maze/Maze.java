@@ -21,18 +21,30 @@ import de.fatochs.ebs.units.Killer;
  */
 public class Maze
 {
-	Tile[][]				tileMap;
-	int						tileSize			= 64;
-	TileInformation			startTile;
+	Tile[][]			tileMap;
+	int					tileSize	= 64;
+	TileInformation		startTile;
 	/**
 	 * Objects that can collide with the Escaper
 	 */
-	LinkedList<Killer>	killers	= new LinkedList<Killer>();
+	LinkedList<Killer>	killers		= new LinkedList<Killer>();
 
 	public static Maze load(FileHandle fileHandle)
 	{
 		Json json = new Json();
 		return json.fromJson(Maze.class, fileHandle);
+	}
+
+	public String save(boolean prettyPrint)
+	{
+		Json json = new Json();
+		if (prettyPrint)
+		{
+			return json.toJson(this, Maze.class);
+		} else
+		{
+			return json.prettyPrint(this);
+		}
 	}
 
 	public void start()
@@ -62,7 +74,7 @@ public class Maze
 				it.remove();
 			} else
 			{
-				if(col.checkCollision(EBGame.escaper))
+				if (col.checkCollision(EBGame.escaper))
 				{
 					col.solveCollision(EBGame.escaper);
 				}
