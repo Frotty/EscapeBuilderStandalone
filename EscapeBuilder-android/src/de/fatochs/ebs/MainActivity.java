@@ -1,9 +1,11 @@
-package de.frotty.ebs;
+package de.fatochs.ebs;
 
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+
+import de.fatochs.ebs.EBGame;
 
 public class MainActivity extends AndroidApplication {
     @Override

@@ -1,4 +1,4 @@
-package de.frotty.ebs.maze;
+package de.fatochs.ebs.maze;
 
 /**
  * Type a Tile can have

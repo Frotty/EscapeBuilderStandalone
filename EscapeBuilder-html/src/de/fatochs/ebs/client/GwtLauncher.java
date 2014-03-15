@@ -1,6 +1,7 @@
-package de.frotty.ebs.client;
+package de.fatochs.ebs.client;
 
-import de.frotty.ebs.EBGame;
+import de.fatochs.ebs.EBGame;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;

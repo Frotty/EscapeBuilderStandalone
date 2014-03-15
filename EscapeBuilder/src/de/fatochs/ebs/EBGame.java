@@ -1,4 +1,4 @@
-package de.frotty.ebs;
+package de.fatochs.ebs;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;

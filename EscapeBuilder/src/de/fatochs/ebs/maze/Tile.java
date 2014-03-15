@@ -1,4 +1,4 @@
-package de.frotty.ebs.maze;
+package de.fatochs.ebs.maze;
 
 import com.badlogic.gdx.math.Vector2;
 
