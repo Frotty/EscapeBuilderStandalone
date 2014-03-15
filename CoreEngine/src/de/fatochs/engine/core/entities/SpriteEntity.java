@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public class SpriteEntity extends Entity 
+public class SpriteEntity extends Entity2D 
 {
 	public Sprite sprite;
 	
