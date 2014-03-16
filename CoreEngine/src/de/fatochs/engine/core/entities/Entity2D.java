@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Vector2;
  */
 public abstract class Entity2D implements Entity<Vector2>
 {
-
 	/**
 	 * The 2D position vector.
 	 */
@@ -99,6 +98,18 @@ public abstract class Entity2D implements Entity<Vector2>
 	public Vector2 setPos(final Vector2 pos)
 	{
 		return position.sub(position).add(pos);
+	}
+	
+	@Override
+	public void setX(final float x)
+	{
+		position.x = x;
+	}
+	
+	@Override
+	public void setY(final float y)
+	{
+		position.y = y;
 	}
 
 	/*

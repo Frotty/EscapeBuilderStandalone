@@ -1,7 +1,7 @@
 package de.fatochs.engine.core.entities;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -10,14 +10,14 @@ import com.badlogic.gdx.math.Vector2;
 public class SpriteEntity extends Entity2D
 {
 	/**
-	 * The drawable {@link com.badlogic.gdx.graphics.g2d.Sprite Sprite}.
+	 * The drawable {@link Sprite}.
 	 */
 	protected Sprite	sprite;
 
 	/**
 	 * Creates an new sprite entity with the given sprite.
 	 * <p>
-	 * The position and velocity are initialized to (0, 0).
+	 * The position and velocity are both initialized to (0, 0).
 	 * 
 	 * @param sprite
 	 *            the sprite
@@ -37,7 +37,7 @@ public class SpriteEntity extends Entity2D
 	 * @param sprite
 	 *            the sprite
 	 * @param pos
-	 *            the position
+	 *            the position vector
 	 */
 	public SpriteEntity(final Sprite sprite, final Vector2 pos)
 	{
@@ -52,9 +52,9 @@ public class SpriteEntity extends Entity2D
 	 * @param sprite
 	 *            the sprite
 	 * @param pos
-	 *            the position
+	 *            the position vector
 	 * @param vel
-	 *            the velocity
+	 *            the velocity vector
 	 */
 	public SpriteEntity(final Sprite sprite, final Vector2 pos, final Vector2 vel)
 	{
@@ -64,12 +64,12 @@ public class SpriteEntity extends Entity2D
 	}
 
 	/**
-	 * Draws the {@code sprite} with the given sprite batch.
+	 * Draws the {@code sprite} with the given {@link Batch}.
 	 * 
 	 * @param batch
 	 *            the sprite batch
 	 */
-	public void render(final SpriteBatch batch)
+	public void render(final Batch batch)
 	{
 		sprite.draw(batch);
 	}
@@ -84,5 +84,19 @@ public class SpriteEntity extends Entity2D
 		super.update();
 
 		sprite.setPosition(position.x, position.y);
+	}
+
+	@Override
+	public void setX(float x)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setY(float x)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }

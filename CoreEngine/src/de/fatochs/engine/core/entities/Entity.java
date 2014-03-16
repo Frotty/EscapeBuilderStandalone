@@ -51,6 +51,9 @@ public interface Entity<VECTOR extends Vector<? extends Vector<?>>>
 	 * @return the position of the entity after setting it
 	 */
 	public VECTOR setPos(VECTOR pos);
+	
+	public void setX(float x);
+	public void setY(float x);
 
 	/**
 	 * Returns the current velocity of the entity.
