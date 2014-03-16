@@ -1,73 +1,141 @@
 package de.fatochs.ebs;
 
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
+
+<<<<<<< HEAD
+=======
 import com.badlogic.gdx.ApplicationListener;
+>>>>>>> 26f1a774a99b5a835f4ba9d4aca32bd9fd8f6d8e
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+<<<<<<< HEAD
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+=======
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+>>>>>>> 26f1a774a99b5a835f4ba9d4aca32bd9fd8f6d8e
 
+import de.fatochs.ebs.maze.Maze;
 import de.fatochs.ebs.units.Escaper;
+import de.fatochs.ebs.units.Killer;
+import de.fatochs.ebs.units.KillerAccessor;
 import de.fatochs.engine.core.entities.SpriteEntity;
+import de.fatochs.engine.core.ui.BaseGame;
+import de.fatochs.engine.core.ui.BaseScreen;
 
-public class EBGame implements ApplicationListener
+public class EBGame extends BaseGame
 {
 	public static TextureAtlas	textureAtlas;
 	private OrthographicCamera	camera;
 	private SpriteBatch			batch;
-	private Texture				texture;
 	public static Escaper		escaper;
 	SpriteEntity				se;
+	TweenManager				tweenManager;
+	Maze testMaze;
 
+	/*
+	 * (non-Javadoc)
+	 * @see de.fatochs.engine.core.ui.BaseGame#createMe()
+	 */
 	@Override
-	public void create()
+	protected void createMe()
 	{
-		final float w = Gdx.graphics.getWidth();
-		final float h = Gdx.graphics.getHeight();
+		camera = new OrthographicCamera(1, height / width);
 
-		camera = new OrthographicCamera(1, h / w);
+<<<<<<< HEAD
+		camera = new OrthographicCamera(width, height);
+		camera.setToOrtho(false, width, height);
+=======
+		camera = new OrthographicCamera(w, h);
+		camera.setToOrtho(false, w, h);
+>>>>>>> 26f1a774a99b5a835f4ba9d4aca32bd9fd8f6d8e
 		batch = new SpriteBatch();
+		Tween.registerAccessor(Killer.class, new KillerAccessor());
+		textureAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles/packed/EBSPack.pack"));
+		tweenManager = new TweenManager();
+		testMaze = new Maze();
+<<<<<<< HEAD
+=======
 
-		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-
-		new TextureRegion(texture, 0, 0, 512, 275);
+>>>>>>> 26f1a774a99b5a835f4ba9d4aca32bd9fd8f6d8e
 	}
 
 	@Override
 	public void dispose()
 	{
 		batch.dispose();
-		texture.dispose();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see de.fatochs.engine.core.ui.UiApp#atlasPath()
+	 */
 	@Override
-	public void render()
+	protected String atlasPath()
 	{
+<<<<<<< HEAD
+		return "data/texture.atlas";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see de.fatochs.engine.core.ui.UiApp#skinPath()
+	 */
+	@Override
+	protected String skinPath()
+	{
+		return null;
+=======
+		testMaze.update();
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		se.render(batch);
+		testMaze.render(batch);
 		batch.end();
+		tweenManager.update(Gdx.graphics.getDeltaTime());
+
+>>>>>>> 26f1a774a99b5a835f4ba9d4aca32bd9fd8f6d8e
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * de.fatochs.engine.core.ui.UiApp#styleSkin(com.badlogic.gdx.scenes.scene2d
+	 * .ui.Skin, com.badlogic.gdx.graphics.g2d.TextureAtlas)
+	 */
 	@Override
-	public void resize(final int width, final int height)
+	protected void styleSkin(Skin skin, TextureAtlas atlas)
 	{
+		new Styles().styleSkin(skin, atlas);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see de.fatochs.engine.core.ui.UiApp#getFirstScreen()
+	 */
 	@Override
-	public void pause()
+	protected BaseScreen getFirstScreen()
 	{
+		return new MainScreen(this);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see de.fatochs.engine.core.ui.BaseGame#renderMe(float)
+	 */
 	@Override
-	public void resume()
+	protected void renderMe(float delta)
 	{
+		testMaze.update();
+		
+		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		testMaze.render(batch);
+		batch.end();
+		tweenManager.update(Gdx.graphics.getDeltaTime());
 	}
 }
