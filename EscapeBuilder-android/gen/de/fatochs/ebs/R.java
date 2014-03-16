@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package de.frotty.ebs;
+package de.fatochs.ebs;
 
 public final class R {
     public static final class attr {
