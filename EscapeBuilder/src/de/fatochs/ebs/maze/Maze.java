@@ -25,6 +25,15 @@ public class Maze
 	 * Objects that can collide with the Escaper
 	 */
 	LinkedList<Killer>	killers		= new LinkedList<Killer>();
+	
+	public Maze() {
+		tileMap = new Tile[7][3];
+		for(int i = 0; i < tileMap.length; i++) {
+			for(int j = 0; j < tileMap[0].length; j++) {
+				tileMap[i][j] = new Tile(new Vector2(tileSize*i, tileSize*j), TileInformation.WALKABLE);
+			}
+		}
+	}
 
 	public static Maze load(final FileHandle fileHandle)
 	{

@@ -1,17 +1,21 @@
 package de.fatochs.ebs.units;
 
+import aurelienribon.tweenengine.Tween;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 public class CircleKiller extends Killer
 {
 	float	radius;
+	boolean moving = false;
 
 	public CircleKiller(final Sprite sprite, final Vector2 pos)
 	{
 		super(sprite, pos);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	@Override
 	public boolean checkCollision(final Escaper escaper)
