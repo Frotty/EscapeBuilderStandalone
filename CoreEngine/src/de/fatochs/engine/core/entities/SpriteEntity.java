@@ -45,6 +45,19 @@ public class SpriteEntity extends Entity2D
 
 		this.sprite = sprite;
 	}
+	
+	/**
+	 * Creates a new sprite entity with the given position.
+	 * <p>
+	 * The velocity is initialized to (0, 0).
+	 * 
+	 * @param pos
+	 *            the position vector
+	 */
+	public SpriteEntity(final Vector2 pos)
+	{
+		super(pos);
+	}
 
 	/**
 	 * Creates a new sprite entity with the given sprite, position and velocity.

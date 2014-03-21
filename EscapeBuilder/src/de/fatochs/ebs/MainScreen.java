@@ -25,15 +25,27 @@ public class MainScreen extends BaseScreen
 	{
 		super(game);
 
-		final TextButton startButton = UiFactory.textButton("Start");
+		final TextButton playButton = UiFactory.textButton("Play");
 
-		startButton.addListener(new ClickListener()
+		playButton.addListener(new ClickListener()
 		{
 			@Override
 			public void clicked(final InputEvent event, final float x, final float y)
 			{
 				game.switchScreens(new GameScreen(game));
-				startButton.setChecked(false);
+				playButton.setChecked(false);
+			}
+		});
+		
+		final TextButton editButton = UiFactory.textButton("Edit");
+
+		editButton.addListener(new ClickListener()
+		{
+			@Override
+			public void clicked(final InputEvent event, final float x, final float y)
+			{
+//				game.switchScreens(new GameScreen(game));
+//				editButton.setChecked(false);
 			}
 		});
 
@@ -51,7 +63,9 @@ public class MainScreen extends BaseScreen
 		defaults().pad(6f);
 		setBackground(UiFactory.drawable("window1"));
 		setColor(UiFactory.color("lt-blue"));
-		add(startButton);
+		add(playButton);
+		row();
+		add(editButton);
 		row();
 		add(exitButton);
 	}

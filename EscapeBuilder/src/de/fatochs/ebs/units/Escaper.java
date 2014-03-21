@@ -34,11 +34,11 @@ public class Escaper extends SpriteEntity
 		final Tile currentTile = currentMaze.getTileFromPos(position);
 		switch (currentTile.info)
 		{
-		case CONTROLLABLE_ICE:
-			//TODO
-			break;
-		case UNWALKABLE:
-			kill();
+//		case CONTROLLABLE_ICE:
+//			//TODO
+//			break;
+//		case UNWALKABLE:
+//			kill();
 		case WALKABLE:
 			position.add(velocity);
 		default:

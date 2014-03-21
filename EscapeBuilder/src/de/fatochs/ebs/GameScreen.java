@@ -3,7 +3,6 @@
  */
 package de.fatochs.ebs;
 
-import de.fatochs.ebs.menu.MainMenu;
 import de.fatochs.engine.core.ui.BaseScreen;
 import de.fatochs.engine.core.ui.BaseGame;
 
