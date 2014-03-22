@@ -5,14 +5,9 @@ import static de.fatochs.ebs.maze.TileInformation.WALKABLE;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.ZipOutputStream;
-
-import org.xerial.snappy.Snappy;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -23,7 +18,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter.OutputType;
-import com.sun.nio.zipfs.ZipInfo;
 
 import de.fatochs.ebs.EBGame;
 import de.fatochs.ebs.units.Killer;
@@ -49,8 +43,9 @@ public class Maze extends TiledMap
 	 */
 	LinkedList<Killer>			killers		= new LinkedList<Killer>();
 
-	public Maze()
+	public Maze(String name)
 	{
+		this.name = name;
 		final MapLayers layers = getLayers();
 
 		final TiledMapTileLayer layer = new TiledMapTileLayer(200, 200, tileSize, tileSize);
@@ -75,7 +70,6 @@ public class Maze extends TiledMap
 		long time = System.currentTimeMillis();
 		json.setOutputType(OutputType.minimal);
 		String jsonString = json.toJson(this, this.getClass());
-		
 
 		ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();
 		OutputStream fileOut = Gdx.files.local(name + ".map").write(false);

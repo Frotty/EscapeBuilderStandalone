@@ -44,8 +44,8 @@ public class MainScreen extends BaseScreen
 			@Override
 			public void clicked(final InputEvent event, final float x, final float y)
 			{
-				// game.switchScreens(new GameScreen(game));
-				// editButton.setChecked(false);
+				 game.switchScreens(new EditorScreen(game));
+				 editButton.setChecked(false);
 			}
 		});
 
