@@ -8,39 +8,82 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 /**
+ * An abstract class for game screens.
+ * <p>
+ * Every game screen MUST extend this class. Most of the methods can be
+ * overridden to change the default behavior.
+ * <p>
+ * The {@code BaseScreen} provides a screen transition method. Override this
+ * method to change the screen transition behavior.
+ * <p>
+ * The {@code BaseScreen} provides an abstract method for handling the pressing
+ * of the back button on a smart phone.
+ * <p>
+ * The {@code BaseScreen} provides a render methods for game screens and a
+ * method to see if it is a game screen.
+ * 
  * @author pinkie.swirl@mailbox.org
  */
 public abstract class BaseScreen extends Table
 {
-
+	/**
+	 * The reference to the game class.
+	 */
 	protected final BaseGame	game;
 
+	/**
+	 * Used to determine if this screen is a game screen.
+	 * <p>
+	 * TRUE if the screen is a game screen, FALSE otherwise.
+	 */
 	private final boolean		isGameScreen;
 
-	/** the default padding of the mainTable */
-	public static float			defaultPad;
-
-	/** the duration of the screen transition for the screenOut method */
+	/**
+	 * The duration of the screen transition for the {@link #screenOut()}
+	 * method.
+	 */
 	public float				dur;
 
+	/**
+	 * Constructor for creating a screen that is NOT a game screen.
+	 * <p>
+	 * This means that {@link #isGameScreen} is false!
+	 * 
+	 * @param game
+	 *            the reference to the game class
+	 */
 	public BaseScreen(final BaseGame game)
 	{
 		this(game, false);
 	}
 
+	/**
+	 * Constructor for creating a screen.
+	 * 
+	 * @param game
+	 *            the reference to the game class
+	 * @param isGameScreen
+	 *            TRUE if the screen should be a game screen, FALSE otherwise
+	 */
 	public BaseScreen(final BaseGame game, boolean isGameScreen)
 	{
+		assert game != null : "The reference to the game class is NULL!";
+
 		this.game = game;
+
 		this.isGameScreen = isGameScreen;
+
 		dur = game.defaultDur;
-		BaseScreen.defaultPad = Math.round(Math.max(game.height, game.width) * .02f);
-		defaults().pad(BaseScreen.defaultPad);
+
+		defaults().pad(Math.round(Math.max(game.height, game.width) * .02f));
+
 		setFillParent(true);
 	}
 
 	/**
-	 * override if you want, good for if you keep your screens around instead of
-	 * creating new ones each time
+	 * Can be used to recycle screens instead of creating new ones all the time.
+	 * 
+	 * @return this
 	 */
 	public BaseScreen show()
 	{
@@ -48,8 +91,7 @@ public abstract class BaseScreen extends Table
 	}
 
 	/**
-	 * override for custom screen transitions, otherwise current screen just
-	 * slides to the left
+	 * Override this method to change the screen transition.
 	 */
 	protected void screenOut()
 	{
@@ -58,7 +100,10 @@ public abstract class BaseScreen extends Table
 		addAction(action);
 	}
 
-	/** what happens when the back button is pressed on Android */
+	/**
+	 * Override this method if you want to specify what should happen when the
+	 * back button on a smart phone is pressed.
+	 */
 	public abstract void onBackPress();
 
 	public void hide()
@@ -66,13 +111,24 @@ public abstract class BaseScreen extends Table
 	}
 
 	/**
-	 * @return the isGameScreen
+	 * Returns TRUE if the screen is a game screen, FALSE otherwise.
+	 * 
+	 * @return TRUE if the screen is a game screen, FALSE otherwise
 	 */
-	public boolean isGameScreen()
+	public final boolean isGameScreen()
 	{
 		return isGameScreen;
 	}
 
+	/**
+	 * The render methods for the game screen.
+	 * <p>
+	 * Override this only in the game screen, other screens are not calling this
+	 * method!
+	 * 
+	 * @param delta
+	 *            the time of the last game loop.
+	 */
 	public void render(float delta)
 	{
 		// Override in game screen.

@@ -66,11 +66,11 @@ public abstract class BaseGame implements ApplicationListener
 	/**
 	 * The currently rendered screen.
 	 */
-	private BaseScreen				currentScreen;
+	protected BaseScreen			currentScreen;
 	/**
 	 * The next rendered screen (for screen switching).
 	 */
-	private BaseScreen				nextScreen;
+	protected BaseScreen				nextScreen;
 
 	/**
 	 * The duration of the screen transitions.
@@ -242,13 +242,14 @@ public abstract class BaseGame implements ApplicationListener
 	 */
 	public void switchScreens(final BaseScreen screen)
 	{
-		durAccum = currentScreen.dur;
 		nextScreen = screen;
 		nextScreen.setTouchable(Touchable.disabled);
 		nextScreen.show();
 		stage.addActor(nextScreen);
+
 		if (currentScreen != null)
 		{
+			durAccum = currentScreen.dur;
 			currentScreen.screenOut();
 			currentScreen.setTouchable(Touchable.disabled);
 			currentScreen.toFront();
