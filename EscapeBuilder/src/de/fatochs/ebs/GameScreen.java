@@ -3,6 +3,7 @@
  */
 package de.fatochs.ebs;
 
+<<<<<<< HEAD
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
@@ -11,6 +12,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import de.fatochs.ebs.maze.Maze;
 import de.fatochs.ebs.units.Killer;
 import de.fatochs.ebs.units.KillerAccessor;
+=======
+import de.fatochs.engine.core.ui.BaseScreen;
+>>>>>>> ad20ae57bb752bb88097afbe3283dfdb9a642621
 import de.fatochs.engine.core.ui.BaseGame;
 import de.fatochs.engine.core.ui.BaseScreen;
 

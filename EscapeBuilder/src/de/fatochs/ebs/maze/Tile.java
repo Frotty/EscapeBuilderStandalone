@@ -12,15 +12,15 @@ public class Tile extends SpriteEntity
 
 	public Tile(final Vector2 position, final TileInformation info)
 	{
-		super(createSprite(info.region, position), position);
+		super(position);
 		this.info = info;
 	}
 	
-	private static Sprite createSprite(TextureRegion region, Vector2 position) {
-		Sprite sprite = new Sprite(region);
+	public void createSprite() {
+		//TODO Find correct TextureRegion from TileSet
+		sprite = new Sprite(info.tileSet.getMid());
 		sprite.setPosition(position.x, position.y);
 		sprite.setOrigin(position.x+sprite.getWidth()/2, position.y+sprite.getHeight()/2);
-		return sprite;
 	}
 
 }

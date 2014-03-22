@@ -19,7 +19,7 @@ import de.fatochs.ebs.units.Killer;
 public class Maze
 {
 	Tile[][]			tileMap;
-	int					tileSize	= 64;
+	int					tileSize	= 32;
 	TileInformation		startTile;
 	/**
 	 * Objects that can collide with the Escaper
@@ -31,8 +31,10 @@ public class Maze
 		for(int i = 0; i < tileMap.length; i++) {
 			for(int j = 0; j < tileMap[0].length; j++) {
 				tileMap[i][j] = new Tile(new Vector2(tileSize*i, tileSize*j), TileInformation.WALKABLE);
+				tileMap[i][j].createSprite();
 			}
 		}
+		
 	}
 
 	public static Maze load(final FileHandle fileHandle)
