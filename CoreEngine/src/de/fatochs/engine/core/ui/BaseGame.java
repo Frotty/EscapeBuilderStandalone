@@ -109,7 +109,8 @@ public abstract class BaseGame implements ApplicationListener
 
 		// Adds all recourses from a skin file, if it exists.
 		final String skinPath = skinPath();
-		if (skinPath != null) {
+		if (skinPath != null)
+		{
 			skin.load(Gdx.files.internal(skinPath));
 		}
 		styleSkin(skin, atlas);
@@ -123,7 +124,8 @@ public abstract class BaseGame implements ApplicationListener
 			@Override
 			public boolean keyDown(final InputEvent event, final int keycode)
 			{
-				if (keycode == Keys.BACK) {
+				if (keycode == Keys.BACK)
+				{
 					currentScreen.onBackPress();
 				}
 				return false;
@@ -192,9 +194,11 @@ public abstract class BaseGame implements ApplicationListener
 	{
 		final float delta = Gdx.graphics.getDeltaTime();
 
-		if (durAccum > 0f) {
+		if (durAccum > 0f)
+		{
 			durAccum -= delta;
-			if (durAccum <= 0f) {
+			if (durAccum <= 0f)
+			{
 				currentScreen.hide();
 				currentScreen.remove();
 				currentScreen = nextScreen;
@@ -207,7 +211,8 @@ public abstract class BaseGame implements ApplicationListener
 		Gdx.gl.glClearColor(CLEAR_COLOR.r, CLEAR_COLOR.g, CLEAR_COLOR.b, CLEAR_COLOR.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-		if (currentScreen.isGameScreen()) {
+		if (currentScreen.isGameScreen())
+		{
 			batch.setProjectionMatrix(camera.combined);
 			batch.begin();
 			currentScreen.render(delta);
@@ -242,7 +247,8 @@ public abstract class BaseGame implements ApplicationListener
 		nextScreen.setTouchable(Touchable.disabled);
 		nextScreen.show();
 		stage.addActor(nextScreen);
-		if (currentScreen != null) {
+		if (currentScreen != null)
+		{
 			currentScreen.screenOut();
 			currentScreen.setTouchable(Touchable.disabled);
 			currentScreen.toFront();

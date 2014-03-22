@@ -14,7 +14,8 @@ public class TileSet
 	public TileSet(TextureRegion setRegion)
 	{
 		regions = setRegion.split(TILESET_SIZE, TILESET_SIZE);
-		if (regions.length != TILESET_WIDTH || regions[0].length != TILESET_HEIGHT) {
+		if (regions.length != TILESET_WIDTH || regions[0].length != TILESET_HEIGHT)
+		{
 			Gdx.app.error("Fatal", "x: " + regions.length + " y: " + regions[0].length,
 					new GdxRuntimeException("Invalid TileSet"));
 		}

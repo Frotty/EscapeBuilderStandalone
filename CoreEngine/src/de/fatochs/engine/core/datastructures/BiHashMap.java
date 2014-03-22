@@ -31,9 +31,11 @@ public class BiHashMap<K1, K2, V>
 	public V put(K1 key1, K2 key2, V value)
 	{
 		Map<K2, V> map;
-		if (mMap.containsKey(key1)) {
+		if (mMap.containsKey(key1))
+		{
 			map = mMap.get(key1);
-		} else {
+		} else
+		{
 			map = new HashMap<K2, V>();
 			mMap.put(key1, map);
 		}
