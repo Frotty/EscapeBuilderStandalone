@@ -40,7 +40,7 @@ public abstract class BaseGame implements ApplicationListener
 	private Skin					skin;
 
 	public Batch					batch;
-	public Camera					camera;
+	public OrthographicCamera		camera;
 
 	/**
 	 * The input multiplexer.
@@ -70,7 +70,7 @@ public abstract class BaseGame implements ApplicationListener
 	/**
 	 * The next rendered screen (for screen switching).
 	 */
-	protected BaseScreen				nextScreen;
+	protected BaseScreen			nextScreen;
 
 	/**
 	 * The duration of the screen transitions.

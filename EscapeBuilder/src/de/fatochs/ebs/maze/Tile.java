@@ -23,4 +23,8 @@ public class Tile extends SpriteEntity
 		sprite.setOrigin(position.x + sprite.getWidth() / 2, position.y + sprite.getHeight() / 2);
 	}
 
+	public Sprite getSprite()
+	{
+		return sprite;
+	}
 }

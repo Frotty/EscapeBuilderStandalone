@@ -18,8 +18,8 @@ import de.fatochs.ebs.units.Killer;
  */
 public class Maze
 {
-	Tile[][]			tileMap;
-	int					tileSize	= 32;
+	public Tile[][]		tileMap;
+	public int			tileSize	= 32;
 	TileInformation		startTile;
 	/**
 	 * Objects that can collide with the Escaper
