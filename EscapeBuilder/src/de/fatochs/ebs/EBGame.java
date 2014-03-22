@@ -2,6 +2,7 @@ package de.fatochs.ebs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import de.fatochs.ebs.units.Escaper;
@@ -21,6 +22,8 @@ public class EBGame extends BaseGame
 	protected void createMe()
 	{
 		textureAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles/packed/EBSPack.pack"));
+
+		escaper = new Escaper(new Vector2());
 	}
 
 	@Override

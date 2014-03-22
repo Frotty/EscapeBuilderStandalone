@@ -1,11 +1,14 @@
 package de.fatochs.ebs.maze;
 
+import java.util.Random;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 
 public class TileSet
 {
+	private static final Random	rand			= new Random();
 	private static final int	TILESET_WIDTH	= 4;
 	private static final int	TILESET_HEIGHT	= 4;
 	private static final int	TILESET_SIZE	= 32;
@@ -68,7 +71,7 @@ public class TileSet
 
 	public TextureRegion getMidRandomVariation()
 	{
-		switch ((int) (Math.random() * 5))
+		switch (rand.nextInt(4))
 		{
 		case 0:
 			return getMid();

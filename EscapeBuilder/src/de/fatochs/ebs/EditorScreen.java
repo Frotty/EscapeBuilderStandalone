@@ -30,7 +30,8 @@ public class EditorScreen extends BaseScreen
 			@Override
 			public void clicked(final InputEvent event, final float x, final float y)
 			{
-
+				// TODO Implement method
+				throw new UnsupportedOperationException();
 			}
 		});
 
