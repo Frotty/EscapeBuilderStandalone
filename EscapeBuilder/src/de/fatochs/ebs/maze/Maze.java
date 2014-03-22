@@ -1,10 +1,15 @@
 package de.fatochs.ebs.maze;
 
+import static de.fatochs.ebs.maze.TileInformation.WALKABLE;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
 
@@ -16,58 +21,57 @@ import de.fatochs.ebs.units.Killer;
  * 
  * @author Frotty
  */
-public class Maze
+public class Maze extends TiledMap
 {
-	public Tile[][]		tileMap;
-	public int			tileSize	= 32;
-	TileInformation		startTile;
+	private static final Json	json		= new Json();
+
+	protected Texture			texture;
+
+	public int					tileSize	= 32;
+	Tile						startTile;
+	
 	/**
 	 * Objects that can collide with the Escaper
 	 */
-	LinkedList<Killer>	killers		= new LinkedList<Killer>();
+	LinkedList<Killer>			killers		= new LinkedList<Killer>();
 
 	public Maze()
 	{
-		tileMap = new Tile[7][3];
-		for (int i = 0; i < tileMap.length; i++)
+		final MapLayers layers = getLayers();
+
+		final TiledMapTileLayer layer = new TiledMapTileLayer(7, 3, tileSize, tileSize);
+
+		for (int x = 0; x < 7; x++)
 		{
-			for (int j = 0; j < tileMap[0].length; j++)
+			for (int y = 0; y < 3; y++)
 			{
-				tileMap[i][j] = new Tile(new Vector2(tileSize * i, tileSize * j), TileInformation.WALKABLE);
-				tileMap[i][j].createSprite();
+				final Cell cell = new Cell();
+				cell.setTile(new Tile(WALKABLE));
+				layer.setCell(x, y, cell);
 			}
 		}
 
-	}
-
-	public static Maze load(final FileHandle fileHandle)
-	{
-		final Json json = new Json();
-		return json.fromJson(Maze.class, fileHandle);
+		layers.add(layer);
 	}
 
 	public String save(final boolean prettyPrint)
 	{
-		final Json json = new Json();
-		if (prettyPrint) return json.toJson(this, Maze.class);
-		else
-			return json.prettyPrint(this);
+		String result = "";
+
+		if (prettyPrint)
+		{
+			result = json.toJson(this, Maze.class);
+		} else
+		{
+			result = json.prettyPrint(this);
+		}
+
+		return result;
 	}
 
 	public void start()
 	{
 
-	}
-
-	public void render(final Batch batch)
-	{
-		for (final Tile[] ta : tileMap)
-		{
-			for (final Tile tile : ta)
-			{
-				tile.render(batch);
-			}
-		}
 	}
 
 	public void update()
@@ -78,7 +82,7 @@ public class Maze
 			final Killer col = it.next();
 			if (col.isTerminated())
 			{
-				it.remove();
+				it.remove(); // FIXME - This will fail!
 			} else
 			{
 				if (col.checkCollision(EBGame.escaper))
@@ -91,7 +95,9 @@ public class Maze
 
 	public Tile getTileFromPos(final Vector2 position)
 	{
-		return tileMap[Math.round(position.x) / tileSize][Math.round(position.y) / tileSize];
+		return (Tile) ((TiledMapTileLayer) getLayers().get(0))
+				.getCell((int) Math.rint(position.x) / tileSize, (int) Math.rint(position.y) / tileSize)
+				.getTile();
 	}
 
 }
