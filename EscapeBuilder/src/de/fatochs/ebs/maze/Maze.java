@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
@@ -57,7 +58,7 @@ public class Maze
 
 	}
 
-	public void render(final SpriteBatch batch)
+	public void render(final Batch batch)
 	{
 		for (final Tile[] ta : tileMap)
 		{

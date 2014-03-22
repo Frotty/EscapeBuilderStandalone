@@ -41,7 +41,7 @@ public class GameScreen extends BaseScreen
 
 		game.batch.setProjectionMatrix(game.camera.combined);
 		game.batch.begin();
-		testMaze.render((SpriteBatch) game.batch);
+		testMaze.render(game.batch);
 		game.batch.end();
 		
 		
