@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import de.fatochs.ebs.units.Escaper;
-import de.fatochs.engine.core.entities.SpriteEntity;
 import de.fatochs.engine.core.ui.BaseGame;
 import de.fatochs.engine.core.ui.BaseScreen;
 
@@ -13,8 +12,6 @@ public class EBGame extends BaseGame
 {
 	public static TextureAtlas	textureAtlas;
 	public static Escaper		escaper;
-	SpriteEntity				se;
-	
 
 	/*
 	 * (non-Javadoc)

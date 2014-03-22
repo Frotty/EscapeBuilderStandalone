@@ -36,7 +36,7 @@ public class MainScreen extends BaseScreen
 				playButton.setChecked(false);
 			}
 		});
-		
+
 		final TextButton editButton = UiFactory.textButton("Edit");
 
 		editButton.addListener(new ClickListener()
@@ -44,8 +44,8 @@ public class MainScreen extends BaseScreen
 			@Override
 			public void clicked(final InputEvent event, final float x, final float y)
 			{
-//				game.switchScreens(new GameScreen(game));
-//				editButton.setChecked(false);
+				// game.switchScreens(new GameScreen(game));
+				// editButton.setChecked(false);
 			}
 		});
 

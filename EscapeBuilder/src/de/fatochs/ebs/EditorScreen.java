@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-import de.fatochs.engine.core.ui.BaseScreen;
 import de.fatochs.engine.core.ui.BaseGame;
+import de.fatochs.engine.core.ui.BaseScreen;
 import de.fatochs.engine.core.ui.UiFactory;
 
 /**
@@ -33,7 +33,7 @@ public class EditorScreen extends BaseScreen
 
 			}
 		});
-		
+
 		defaults().pad(6f);
 		setBackground(UiFactory.drawable("window1"));
 		setColor(UiFactory.color("lt-blue"));

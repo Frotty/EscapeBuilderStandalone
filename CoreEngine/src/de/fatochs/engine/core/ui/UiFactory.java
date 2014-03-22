@@ -26,12 +26,10 @@ public final class UiFactory
 
 	protected static void initialize(final Skin skin)
 	{
-		if (!UiFactory.isInitialized)
-		{
+		if (!UiFactory.isInitialized) {
 			UiFactory.skin = skin;
 			UiFactory.isInitialized = true;
-		} else
-		{
+		} else {
 			System.err.println("UiFactory is already initialized! Please check your code!");
 		}
 	}
@@ -40,8 +38,7 @@ public final class UiFactory
 	{
 		TextButton resultButton = null;
 
-		if (UiFactory.isInitialized)
-		{
+		if (UiFactory.isInitialized) {
 			resultButton = new TextButton(text, UiFactory.skin);
 		}
 
@@ -52,8 +49,7 @@ public final class UiFactory
 	{
 		Drawable resultDrawable = null;
 
-		if (UiFactory.isInitialized)
-		{
+		if (UiFactory.isInitialized) {
 			resultDrawable = UiFactory.skin.getDrawable(name);
 		}
 
@@ -64,8 +60,7 @@ public final class UiFactory
 	{
 		Color resultColor = null;
 
-		if (UiFactory.isInitialized)
-		{
+		if (UiFactory.isInitialized) {
 			resultColor = UiFactory.skin.getColor(name);
 		}
 

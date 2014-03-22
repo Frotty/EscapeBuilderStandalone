@@ -15,19 +15,19 @@ public abstract class BaseScreen extends Table
 
 	protected final BaseGame	game;
 
-	private final boolean isGameScreen;
-	
+	private final boolean		isGameScreen;
+
 	/** the default padding of the mainTable */
-	public static float		defaultPad;
+	public static float			defaultPad;
 
 	/** the duration of the screen transition for the screenOut method */
-	public float			dur;
+	public float				dur;
 
 	public BaseScreen(final BaseGame game)
 	{
 		this(game, false);
 	}
-	
+
 	public BaseScreen(final BaseGame game, boolean isGameScreen)
 	{
 		this.game = game;
@@ -72,7 +72,7 @@ public abstract class BaseScreen extends Table
 	{
 		return isGameScreen;
 	}
-	
+
 	public void render(float delta)
 	{
 		// Override in game screen.

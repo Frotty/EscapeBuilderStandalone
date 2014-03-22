@@ -7,7 +7,7 @@ import de.fatochs.engine.core.entities.SpriteEntity;
 
 public abstract class Killer extends SpriteEntity
 {
-	
+
 	public Killer(final Sprite sprite, final Vector2 pos)
 	{
 		super(sprite, pos);

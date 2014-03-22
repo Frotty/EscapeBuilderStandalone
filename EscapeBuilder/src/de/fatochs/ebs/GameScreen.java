@@ -5,24 +5,20 @@ package de.fatochs.ebs;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import de.fatochs.ebs.maze.Maze;
 import de.fatochs.ebs.units.Killer;
 import de.fatochs.ebs.units.KillerAccessor;
 import de.fatochs.engine.core.ui.BaseGame;
 import de.fatochs.engine.core.ui.BaseScreen;
 
-
 /**
  * @author pinkie.swirl@mailbox.org
  */
 public class GameScreen extends BaseScreen
 {
-	TweenManager				tweenManager;
-	Maze						testMaze;
-	
+	TweenManager	tweenManager;
+	Maze			testMaze;
+
 	/**
 	 * @param game
 	 */
@@ -35,6 +31,7 @@ public class GameScreen extends BaseScreen
 		testMaze = new Maze();
 	}
 
+	@Override
 	public void render(float delta)
 	{
 		testMaze.update();
@@ -43,8 +40,7 @@ public class GameScreen extends BaseScreen
 		game.batch.begin();
 		testMaze.render(game.batch);
 		game.batch.end();
-		
-		
+
 		tweenManager.update(delta);
 	}
 
