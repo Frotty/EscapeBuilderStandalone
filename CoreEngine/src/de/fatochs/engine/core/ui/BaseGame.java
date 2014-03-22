@@ -124,7 +124,7 @@ public abstract class BaseGame implements ApplicationListener
 			@Override
 			public boolean keyDown(final InputEvent event, final int keycode)
 			{
-				if (keycode == Keys.BACK)
+				if (keycode == Keys.BACK || keycode == Keys.ESCAPE)
 				{
 					currentScreen.onBackPress();
 				}
