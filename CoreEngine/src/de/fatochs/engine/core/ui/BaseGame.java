@@ -213,10 +213,7 @@ public abstract class BaseGame implements ApplicationListener
 
 		if (currentScreen.isGameScreen())
 		{
-			batch.setProjectionMatrix(camera.combined);
-			batch.begin();
 			currentScreen.render(delta);
-			batch.end();
 		}
 
 		stage.act(delta);
