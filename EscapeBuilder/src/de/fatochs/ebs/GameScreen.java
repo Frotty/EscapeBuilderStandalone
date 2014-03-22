@@ -24,7 +24,7 @@ public class GameScreen extends BaseScreen
 	 */
 	public GameScreen(BaseGame game)
 	{
-		super(game);
+		super(game, true);
 
 		Tween.registerAccessor(Killer.class, new KillerAccessor());
 		tweenManager = new TweenManager();
