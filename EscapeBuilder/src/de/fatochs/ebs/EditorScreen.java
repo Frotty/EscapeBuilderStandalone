@@ -20,12 +20,24 @@ public class EditorScreen extends BaseScreen
 	/**
 	 * @param game
 	 */
-	public EditorScreen(BaseGame game)
+	public EditorScreen(final BaseGame game)
 	{
 		super(game);
 		final TextButton newButton = UiFactory.textButton("New");
 
 		newButton.addListener(new ClickListener()
+		{
+			@Override
+			public void clicked(final InputEvent event, final float x, final float y)
+			{
+				game.switchScreens(new NewMazeScreen(game));
+				newButton.setChecked(false);
+			}
+		});
+		
+		final TextButton loadButton = UiFactory.textButton("Load");
+
+		loadButton.addListener(new ClickListener()
 		{
 			@Override
 			public void clicked(final InputEvent event, final float x, final float y)
@@ -39,6 +51,8 @@ public class EditorScreen extends BaseScreen
 		setBackground(UiFactory.drawable("window1"));
 		setColor(UiFactory.color("lt-blue"));
 		add(newButton);
+		row();
+		add(loadButton);
 		row();
 
 	}

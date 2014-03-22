@@ -4,8 +4,11 @@
 package de.fatochs.engine.core.ui;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 /**
@@ -51,6 +54,27 @@ public final class UiFactory
 		assert UiFactory.isInitialized : "UiFactory is NOT initialized! Call UiFactory#initialize() first!";
 
 		return new TextButton(text, UiFactory.skin);
+	}
+	
+	public static TextField textField(final String text)
+	{
+		assert UiFactory.isInitialized : "UiFactory is NOT initialized! Call UiFactory#initialize() first!";
+
+		return new TextField(text, UiFactory.skin);
+	}
+	
+	public static Label label(final String text)
+	{
+		assert UiFactory.isInitialized : "UiFactory is NOT initialized! Call UiFactory#initialize() first!";
+
+		return new Label(text, UiFactory.skin);
+	}
+	
+	public static <T> SelectBox<T> selectBox()
+	{
+		assert UiFactory.isInitialized : "UiFactory is NOT initialized! Call UiFactory#initialize() first!";
+
+		return new SelectBox<T>(UiFactory.skin);
 	}
 
 	public static Drawable drawable(final String name)

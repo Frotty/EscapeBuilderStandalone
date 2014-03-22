@@ -39,7 +39,7 @@ public class GameScreen extends BaseScreen
 
 		Tween.registerAccessor(Killer.class, new KillerAccessor());
 		tweenManager = new TweenManager();
-		testMaze = new Maze();
+		testMaze = new Maze("test");
 
 		renderer = new OrthogonalTiledMapRenderer(testMaze, 3f, game.batch);
 		game.camera.setToOrtho(false, game.width, game.height);

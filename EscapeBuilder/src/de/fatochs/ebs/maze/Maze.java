@@ -30,13 +30,16 @@ public class Maze extends TiledMap
 	public int					tileSize	= 32;
 	Tile						startTile;
 	
+	public String name;
+	
 	/**
 	 * Objects that can collide with the Escaper
 	 */
 	LinkedList<Killer>			killers		= new LinkedList<Killer>();
 
-	public Maze()
+	public Maze(String name)
 	{
+		this.name = name;
 		final MapLayers layers = getLayers();
 
 		final TiledMapTileLayer layer = new TiledMapTileLayer(7, 3, tileSize, tileSize);

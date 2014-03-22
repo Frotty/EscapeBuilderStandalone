@@ -10,8 +10,12 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.List.ListStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 
 /**
@@ -47,5 +51,15 @@ public class Styles
 		tbs.pressedOffsetX = Math.round(1f * Gdx.graphics.getDensity());
 		tbs.pressedOffsetY = tbs.pressedOffsetX * -1f;
 		skin.add("default", tbs);
+		;
+		final TextFieldStyle tfs = new TextFieldStyle(font, Color.BLACK, btn1down, btn1down
+				, btn1up);
+		skin.add("default", tfs);
+		
+		final ScrollPaneStyle sps = new ScrollPaneStyle(btn1down, btn1up, btn1up, btn1up, btn1up);
+		final ListStyle ls = new ListStyle(font, Color.BLACK, Color.GRAY, btn1down);
+		
+		final SelectBoxStyle sbs = new SelectBoxStyle(font, Color.BLACK, btn1down, sps, ls);
+		skin.add("default", sbs);
 	}
 }
