@@ -3,23 +3,48 @@
  */
 package de.fatochs.ebs;
 
-import de.fatochs.ebs.menu.MainMenu;
-import de.fatochs.engine.core.ui.BaseScreen;
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import de.fatochs.ebs.maze.Maze;
+import de.fatochs.ebs.units.Killer;
+import de.fatochs.ebs.units.KillerAccessor;
 import de.fatochs.engine.core.ui.BaseGame;
+import de.fatochs.engine.core.ui.BaseScreen;
 
 /**
  * @author pinkie.swirl@mailbox.org
  */
 public class GameScreen extends BaseScreen
 {
-
+	TweenManager				tweenManager;
+	Maze						testMaze;
+	
 	/**
 	 * @param game
 	 */
 	public GameScreen(BaseGame game)
 	{
 		super(game);
-		// TODO Auto-generated constructor stub
+
+		Tween.registerAccessor(Killer.class, new KillerAccessor());
+		tweenManager = new TweenManager();
+		testMaze = new Maze();
+	}
+
+	public void render(float delta)
+	{
+		testMaze.update();
+
+		game.batch.setProjectionMatrix(game.camera.combined);
+		game.batch.begin();
+		testMaze.render((SpriteBatch) game.batch);
+		game.batch.end();
+		
+		
+		tweenManager.update(delta);
 	}
 
 	/*
