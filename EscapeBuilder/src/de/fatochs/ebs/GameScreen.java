@@ -17,8 +17,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
+import com.badlogic.gdx.math.Vector2;
 
 import de.fatochs.ebs.maze.Maze;
+import de.fatochs.ebs.units.Escaper;
 import de.fatochs.ebs.units.Killer;
 import de.fatochs.ebs.units.KillerAccessor;
 import de.fatochs.engine.core.ui.BaseGame;
@@ -30,6 +32,8 @@ import de.fatochs.engine.core.ui.BaseScreen;
 public class GameScreen extends BaseScreen
 {
 	OrthogonalTiledMapRenderer	renderer;
+
+	static Escaper				escaper;
 
 	TweenManager				tweenManager;
 	Maze						testMaze;
@@ -50,6 +54,8 @@ public class GameScreen extends BaseScreen
 		game.camera.update();
 
 		testMaze.save();
+
+		escaper = new Escaper(new Vector2());
 	}
 
 	@Override
@@ -62,10 +68,12 @@ public class GameScreen extends BaseScreen
 		renderer.setView(game.camera);
 		renderer.render();
 
-		//		game.batch.setProjectionMatrix(game.camera.combined);
-		//		game.batch.begin();
-		//		testMaze.render(game.batch);
-		//		game.batch.end();
+		game.batch.setProjectionMatrix(game.camera.combined);
+		game.batch.begin();
+		{
+			escaper.render(game.batch);
+		}
+		game.batch.end();
 
 		tweenManager.update(delta);
 	}

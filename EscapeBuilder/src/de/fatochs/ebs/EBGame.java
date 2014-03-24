@@ -12,7 +12,7 @@ import de.fatochs.engine.core.ui.BaseScreen;
 public class EBGame extends BaseGame
 {
 	public static TextureAtlas	textureAtlas;
-	public static Escaper		escaper;
+	
 
 	/*
 	 * (non-Javadoc)
@@ -22,8 +22,6 @@ public class EBGame extends BaseGame
 	protected void createMe()
 	{
 		textureAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles/packed/EBSPack.pack"));
-
-		escaper = new Escaper(new Vector2());
 	}
 
 	@Override
