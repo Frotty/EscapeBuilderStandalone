@@ -99,13 +99,13 @@ public abstract class Entity2D implements Entity<Vector2>
 	{
 		return position.sub(position).add(pos);
 	}
-	
+
 	@Override
 	public void setX(final float x)
 	{
 		position.x = x;
 	}
-	
+
 	@Override
 	public void setY(final float y)
 	{

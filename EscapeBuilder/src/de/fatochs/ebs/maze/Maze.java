@@ -1,12 +1,23 @@
 package de.fatochs.ebs.maze;
 
+import static de.fatochs.ebs.maze.TileInformation.WALKABLE;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonWriter.OutputType;
 
 import de.fatochs.ebs.EBGame;
 import de.fatochs.ebs.units.Killer;
@@ -16,56 +27,75 @@ import de.fatochs.ebs.units.Killer;
  * 
  * @author Frotty
  */
-public class Maze
+public class Maze extends TiledMap
 {
-	Tile[][]			tileMap;
-	int					tileSize	= 32;
-	TileInformation		startTile;
+	private static final Json	json		= new Json();
+
+	protected String			name;
+
+	protected Texture			texture;
+
+	public int					tileSize	= 32;
+	Tile						startTile;
+
 	/**
 	 * Objects that can collide with the Escaper
 	 */
-	LinkedList<Killer>	killers		= new LinkedList<Killer>();
-	
-	public Maze() {
-		tileMap = new Tile[7][3];
-		for(int i = 0; i < tileMap.length; i++) {
-			for(int j = 0; j < tileMap[0].length; j++) {
-				tileMap[i][j] = new Tile(new Vector2(tileSize*i, tileSize*j), TileInformation.WALKABLE);
-				tileMap[i][j].createSprite();
+	LinkedList<Killer>			killers		= new LinkedList<Killer>();
+
+	public Maze(String name)
+	{
+		this.name = name;
+		final MapLayers layers = getLayers();
+
+		final TiledMapTileLayer layer = new TiledMapTileLayer(200, 200, tileSize, tileSize);
+
+		for (int x = 0; x < 200; x++)
+		{
+			for (int y = 0; y < 200; y++)
+			{
+				final Cell cell = new Cell();
+				cell.setTile(new Tile(WALKABLE));
+				layer.setCell(x, y, cell);
 			}
 		}
-		
+
+		name = "testName";
+
+		layers.add(layer);
 	}
 
-	public static Maze load(final FileHandle fileHandle)
+	public void save()
 	{
-		final Json json = new Json();
-		return json.fromJson(Maze.class, fileHandle);
-	}
+		long time = System.currentTimeMillis();
+		json.setOutputType(OutputType.minimal);
+		String jsonString = json.toJson(this, this.getClass());
 
-	public String save(final boolean prettyPrint)
-	{
-		final Json json = new Json();
-		if (prettyPrint)
-			return json.toJson(this, Maze.class);
-		else
-			return json.prettyPrint(this);
+		ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();
+		OutputStream fileOut = Gdx.files.local(name + ".map").write(false);
+		try
+		{
+			MazeZipOut mazeOut = new MazeZipOut(byteArrayOut);
+
+			mazeOut.write(jsonString.getBytes(Charset.forName("UTF-8")));
+
+			mazeOut.close();
+
+			mazeOut = new MazeZipOut(fileOut);
+
+			mazeOut.write(byteArrayOut.toByteArray());
+
+			mazeOut.close();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println((System.currentTimeMillis() - time));
 	}
 
 	public void start()
 	{
 
-	}
-
-	public void render(final SpriteBatch batch)
-	{
-		for (final Tile[] ta : tileMap)
-		{
-			for (final Tile tile : ta)
-			{
-				tile.render(batch);
-			}
-		}
 	}
 
 	public void update()
@@ -76,7 +106,7 @@ public class Maze
 			final Killer col = it.next();
 			if (col.isTerminated())
 			{
-				it.remove();
+				it.remove(); // FIXME - This will fail!
 			} else
 			{
 				if (col.checkCollision(EBGame.escaper))
@@ -89,7 +119,9 @@ public class Maze
 
 	public Tile getTileFromPos(final Vector2 position)
 	{
-		return tileMap[Math.round(position.x) / tileSize][Math.round(position.y) / tileSize];
+		return (Tile) ((TiledMapTileLayer) getLayers().get(0))
+				.getCell((int) Math.rint(position.x) / tileSize, (int) Math.rint(position.y) / tileSize)
+				.getTile();
 	}
 
 }

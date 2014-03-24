@@ -8,8 +8,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -35,6 +39,9 @@ public abstract class BaseGame implements ApplicationListener
 	 */
 	private Skin					skin;
 
+	public Batch					batch;
+	public OrthographicCamera		camera;
+
 	/**
 	 * The input multiplexer.
 	 * <p>
@@ -59,11 +66,11 @@ public abstract class BaseGame implements ApplicationListener
 	/**
 	 * The currently rendered screen.
 	 */
-	private BaseScreen				currentScreen;
+	protected BaseScreen			currentScreen;
 	/**
 	 * The next rendered screen (for screen switching).
 	 */
-	private BaseScreen				nextScreen;
+	protected BaseScreen			nextScreen;
 
 	/**
 	 * The duration of the screen transitions.
@@ -93,8 +100,6 @@ public abstract class BaseGame implements ApplicationListener
 		width = Gdx.graphics.getWidth() / density;
 		height = Gdx.graphics.getHeight() / density;
 
-		System.out.println(width);
-
 		stage = new Stage(width, height, false);
 
 		atlas = new TextureAtlas(atlasPath());
@@ -119,7 +124,7 @@ public abstract class BaseGame implements ApplicationListener
 			@Override
 			public boolean keyDown(final InputEvent event, final int keycode)
 			{
-				if (keycode == Keys.BACK)
+				if (keycode == Keys.BACK || keycode == Keys.ESCAPE)
 				{
 					currentScreen.onBackPress();
 				}
@@ -132,6 +137,9 @@ public abstract class BaseGame implements ApplicationListener
 		Gdx.input.setInputProcessor(BaseGame.inputs);
 
 		BaseGame.inputs.addProcessor(stage);
+
+		batch = new SpriteBatch();
+		camera = new OrthographicCamera(width, height);
 
 		createMe();
 	}
@@ -203,19 +211,14 @@ public abstract class BaseGame implements ApplicationListener
 		Gdx.gl.glClearColor(CLEAR_COLOR.r, CLEAR_COLOR.g, CLEAR_COLOR.b, CLEAR_COLOR.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-		renderMe(delta);
+		if (currentScreen.isGameScreen())
+		{
+			currentScreen.render(delta);
+		}
 
 		stage.act(delta);
 		stage.draw();
 	}
-
-	/**
-	 * Override this method to render the game content.
-	 * 
-	 * @param delta
-	 *            the time between the last render call and now
-	 */
-	protected abstract void renderMe(float delta);
 
 	/**
 	 * Sets the clear color.
@@ -236,13 +239,14 @@ public abstract class BaseGame implements ApplicationListener
 	 */
 	public void switchScreens(final BaseScreen screen)
 	{
-		durAccum = currentScreen.dur;
 		nextScreen = screen;
 		nextScreen.setTouchable(Touchable.disabled);
 		nextScreen.show();
 		stage.addActor(nextScreen);
+
 		if (currentScreen != null)
 		{
+			durAccum = currentScreen.dur;
 			currentScreen.screenOut();
 			currentScreen.setTouchable(Touchable.disabled);
 			currentScreen.toFront();

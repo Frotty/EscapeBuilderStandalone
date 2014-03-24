@@ -45,7 +45,7 @@ public class SpriteEntity extends Entity2D
 
 		this.sprite = sprite;
 	}
-	
+
 	/**
 	 * Creates a new sprite entity with the given position.
 	 * <p>
@@ -103,13 +103,13 @@ public class SpriteEntity extends Entity2D
 	public void setX(float x)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setY(float x)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 }
