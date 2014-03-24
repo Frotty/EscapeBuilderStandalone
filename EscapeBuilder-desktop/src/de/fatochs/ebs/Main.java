@@ -16,7 +16,6 @@ public class Main {
 		Settings settings = new Settings();
         settings.maxWidth = 512;
         settings.maxHeight = 512;
-        settings.debug = true;
         settings.pot = false;
         TexturePacker.process(settings, "../EscapeBuilder-android/assets/textures/ui/images/done",
         		"../EscapeBuilder-android/assets/textures/ui/", "UIPack");
