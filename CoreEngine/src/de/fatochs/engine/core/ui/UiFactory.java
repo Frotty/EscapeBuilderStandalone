@@ -83,6 +83,13 @@ public final class UiFactory
 
 		return UiFactory.skin.getDrawable(name);
 	}
+	
+	public static Drawable background(final String name)
+	{
+		assert UiFactory.isInitialized : "UiFactory is NOT initialized! Call UiFactory#initialize() first!";
+		
+		return UiFactory.skin.getDrawable(name);
+	}
 
 	public static Color color(final String name)
 	{

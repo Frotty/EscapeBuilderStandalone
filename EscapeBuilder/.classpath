@@ -4,6 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="libs/gdx.jar" sourcepath="libs/gdx-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/tween-engine-api.jar" sourcepath="libs/tween-engine-api-sources.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-tools.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CoreEngine"/>
 	<classpathentry kind="lib" path="C:/Users/Pinkie/Desktop/json-smart-2.0-RC3.jar"/>
 	<classpathentry kind="output" path="bin"/>

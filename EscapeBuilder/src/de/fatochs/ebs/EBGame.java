@@ -39,7 +39,7 @@ public class EBGame extends BaseGame
 	@Override
 	protected String atlasPath()
 	{
-		return "data/texture.atlas";
+		return "textures/ui/UIPack.atlas";
 	}
 
 	/*
