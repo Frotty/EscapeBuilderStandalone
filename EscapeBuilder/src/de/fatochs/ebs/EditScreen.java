@@ -14,13 +14,13 @@ import de.fatochs.engine.core.ui.UiFactory;
 /**
  * @author pinkie.swirl@mailbox.org
  */
-public class EditorScreen extends BaseScreen
+public class EditScreen extends BaseScreen
 {
 
 	/**
 	 * @param game
 	 */
-	public EditorScreen(final BaseGame game)
+	public EditScreen(final BaseGame game)
 	{
 		super(game);
 		final TextButton newButton = UiFactory.textButton("New");
