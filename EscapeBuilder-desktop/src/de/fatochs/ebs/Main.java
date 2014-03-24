@@ -11,8 +11,8 @@ public class Main {
 	public static void main(String[] args) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "EscapeBuilder";
-		cfg.width = 480;
-		cfg.height = 320;
+		cfg.width = 1280;
+		cfg.height = 768;
 		Settings settings = new Settings();
         settings.maxWidth = 512;
         settings.maxHeight = 512;
