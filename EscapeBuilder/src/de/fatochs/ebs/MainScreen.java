@@ -44,7 +44,7 @@ public class MainScreen extends BaseScreen
 			@Override
 			public void clicked(final InputEvent event, final float x, final float y)
 			{
-				 game.switchScreens(new EditorScreen(game));
+				 game.switchScreens(new EditScreen(game));
 				 editButton.setChecked(false);
 			}
 		});
@@ -63,12 +63,14 @@ public class MainScreen extends BaseScreen
 		defaults().pad(6f);
 		setBackground(UiFactory.drawable("bg"));
 		setColor(UiFactory.color("lt-blue"));
-		add(playButton);
+		add(playButton).size(0.6f * game.width, 0.2f * game.height);
 		row();
-		add(editButton);
+		add(editButton).size(0.6f * game.width, 0.2f * game.height);
 		row();
-		add(exitButton);
+		add(exitButton).size(0.6f * game.width, 0.2f * game.height);
 	}
+	
+	
 
 	/*
 	 * (non-Javadoc)
