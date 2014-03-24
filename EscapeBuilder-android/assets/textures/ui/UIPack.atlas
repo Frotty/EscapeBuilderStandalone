@@ -1,0 +1,30 @@
+
+UIPack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+TextButton
+  rotate: false
+  xy: 96, 12
+  size: 48, 48
+  split: 14, 15, 10, 31
+  pad: 14, 15, 17, 17
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+TextField
+  rotate: false
+  xy: 146, 13
+  size: 47, 47
+  split: 9, 9, 9, 9
+  pad: 10, 10, 10, 10
+  orig: 47, 47
+  offset: 0, 0
+  index: -1
+bg
+  rotate: false
+  xy: 2, 2
+  size: 92, 58
+  orig: 92, 58
+  offset: 0, 0
+  index: -1
