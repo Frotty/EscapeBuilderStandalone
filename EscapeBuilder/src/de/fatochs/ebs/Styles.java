@@ -22,7 +22,7 @@ public class Styles
 
 	public void styleSkin(final Skin skin, final TextureAtlas atlas)
 	{
-		final BitmapFont font = new BitmapFont(Gdx.files.internal("data/lucida-console-21.fnt"), false);
+		final BitmapFont font = new BitmapFont(Gdx.files.internal("data/trajan.fnt"), false);
 		skin.add("default", font);
 
 		skin.add("lt-blue", new Color(.6f, .8f, 1f, 1f));
