@@ -15,6 +15,8 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.JsonWriter.OutputType;
 
 import de.fatochs.ebs.EBGame;
+import de.fatochs.ebs.GameScreen;
+import de.fatochs.ebs.units.Escaper;
 import de.fatochs.ebs.units.Killer;
 
 /**
@@ -26,10 +28,12 @@ public class Maze extends TiledMap implements Json.Serializable
 {
 	private static final Json	json		= new Json();
 
-	protected String			name;
+	protected String			name		= "Default Name";
 
 	public int					tileSize	= 32;
-	Tile						startTile;
+	Tile						startTile	= null;
+
+	Escaper						escaper		= null;
 
 	/**
 	 * Objects that can collide with the Escaper
@@ -38,7 +42,7 @@ public class Maze extends TiledMap implements Json.Serializable
 
 	Maze()
 	{
-		System.out.println("Called from json??!!");
+		// Empty default constructor.
 	}
 
 	public Maze(String name)
@@ -46,11 +50,11 @@ public class Maze extends TiledMap implements Json.Serializable
 		this.name = name;
 		final MapLayers layers = getLayers();
 
-		final TiledMapTileLayer layer = new TiledMapTileLayer(5, 5, tileSize, tileSize);
+		final TiledMapTileLayer layer = new TiledMapTileLayer(20, 20, tileSize, tileSize);
 
-		for (int x = 0; x < 5; x++)
+		for (int x = 0; x < layer.getWidth(); x++)
 		{
-			for (int y = 0; y < 5; y++)
+			for (int y = 0; y < layer.getHeight(); y++)
 			{
 				final Cell cell = new Cell();
 				cell.setTile(new Tile(WALKABLE));
@@ -65,10 +69,10 @@ public class Maze extends TiledMap implements Json.Serializable
 
 	public void save()
 	{
-		long time = System.currentTimeMillis();
-		json.setOutputType(OutputType.minimal);
-		final String jsonString = json.toJson(this, this.getClass());
-		System.out.println(System.currentTimeMillis() - time);
+		//		long time = System.currentTimeMillis();
+		//		json.setOutputType(OutputType.minimal);
+		//		final String jsonString = json.toJson(this, this.getClass());
+		//		System.out.println(System.currentTimeMillis() - time);
 
 		//		ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();
 		//		OutputStream fileOut = Gdx.files.local(name + ".map").write(false);
@@ -90,14 +94,14 @@ public class Maze extends TiledMap implements Json.Serializable
 		//			e.printStackTrace();
 		//		}
 
-		time = System.currentTimeMillis();
+		//		time = System.currentTimeMillis();
 
 		//		ByteArrayInputStream in = new ByteArrayInputStream(new byte[100]);
 		//		GZIPInputStream gIn = new GZIPInputStream(in);
 		//		gIn.
-		final Maze testttt = json.fromJson(Maze.class, jsonString);
-		System.out.println(System.currentTimeMillis() - time);
-		System.out.println(testttt.name);
+		//		final Maze testttt = json.fromJson(Maze.class, jsonString);
+		//		System.out.println(System.currentTimeMillis() - time);
+		//		System.out.println(testttt.name);
 	}
 
 	public void start()
@@ -107,28 +111,39 @@ public class Maze extends TiledMap implements Json.Serializable
 
 	public void update()
 	{
+		assert escaper != null : "Set the escaper before updating the maze!";
+
 		final Iterator<Killer> it = killers.iterator();
 		while (it.hasNext())
 		{
-			final Killer col = it.next();
-			if (col.isTerminated())
+			final Killer killer = it.next();
+			if (killer.isTerminated())
 			{
 				it.remove(); // FIXME - This will fail!
 			} else
 			{
-				if (col.checkCollision(EBGame.escaper))
+				if (killer.checkCollision(escaper))
 				{
-					col.solveCollision(EBGame.escaper);
+					killer.solveCollision(escaper);
 				}
 			}
 		}
 	}
 
+	public void setEscaper(Escaper escaper)
+	{
+		this.escaper = escaper;
+	}
+
 	public Tile getTileFromPos(final Vector2 position)
 	{
-		return (Tile) ((TiledMapTileLayer) getLayers().get(0))
-				.getCell((int) Math.rint(position.x) / tileSize, (int) Math.rint(position.y) / tileSize)
-				.getTile();
+		Cell cell = ((TiledMapTileLayer) getLayers().get(0))
+				.getCell((int) (Math.round(position.x) / tileSize), (int) (Math.round(position.y) / tileSize));
+		if (cell != null)
+		{
+			return (Tile) cell.getTile();
+		}
+		return null;
 	}
 
 	@Override
@@ -164,5 +179,5 @@ public class Maze extends TiledMap implements Json.Serializable
 		getLayers().add(layer);
 
 	}
-	
+
 }

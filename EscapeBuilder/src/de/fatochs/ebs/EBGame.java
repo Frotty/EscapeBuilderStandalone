@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Logger;
 
 import de.fatochs.ebs.units.Escaper;
 import de.fatochs.engine.core.ui.BaseGame;
@@ -12,7 +13,6 @@ import de.fatochs.engine.core.ui.BaseScreen;
 public class EBGame extends BaseGame
 {
 	public static TextureAtlas	textureAtlas;
-	
 
 	/*
 	 * (non-Javadoc)
@@ -21,6 +21,7 @@ public class EBGame extends BaseGame
 	@Override
 	protected void createMe()
 	{
+		Gdx.app.setLogLevel(Logger.DEBUG);
 		textureAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles/packed/EBSPack.pack"));
 	}
 

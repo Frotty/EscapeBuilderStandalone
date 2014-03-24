@@ -63,7 +63,12 @@ public abstract class Entity2D implements Entity<Vector2>
 		// TODO implement the position and velocity update (?)
 
 		addPos(velocity);
-		velocity.scl(0.5f);
+		velocity.scl(0.8f);
+		
+		if (velocity.isZero(0.4f))
+		{
+			velocity.set(0, 0);
+		}
 	}
 
 	/*
@@ -97,7 +102,7 @@ public abstract class Entity2D implements Entity<Vector2>
 	@Override
 	public Vector2 setPos(final Vector2 pos)
 	{
-		return position.sub(position).add(pos);
+		return position.set(0, 0).add(pos);
 	}
 
 	@Override
@@ -131,7 +136,7 @@ public abstract class Entity2D implements Entity<Vector2>
 	@Override
 	public Vector2 addVel(final Vector2 add)
 	{
-		return velocity.add(velocity);
+		return velocity.add(add);
 	}
 
 	/*

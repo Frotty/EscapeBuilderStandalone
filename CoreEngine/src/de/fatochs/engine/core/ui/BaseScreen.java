@@ -3,6 +3,7 @@
  */
 package de.fatochs.engine.core.ui;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -132,5 +133,10 @@ public abstract class BaseScreen extends Table
 	public void render(float delta)
 	{
 		// Override in game screen.
+	}
+
+	public InputProcessor getInputProcessor()
+	{
+		return null;
 	}
 }

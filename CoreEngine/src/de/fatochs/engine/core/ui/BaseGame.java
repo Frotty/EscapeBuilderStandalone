@@ -99,6 +99,8 @@ public abstract class BaseGame implements ApplicationListener
 		// Sets the width and height, to have an easy access to them
 		width = Gdx.graphics.getWidth() / density;
 		height = Gdx.graphics.getHeight() / density;
+		
+		System.out.println(density);
 
 		stage = new Stage(width, height, false);
 
@@ -240,6 +242,12 @@ public abstract class BaseGame implements ApplicationListener
 	public void switchScreens(final BaseScreen screen)
 	{
 		nextScreen = screen;
+		if (nextScreen.getInputProcessor() != null)
+		{
+			Gdx.app.debug("Input", "Add input processor!");
+			inputs.addProcessor(nextScreen.getInputProcessor());
+		}
+
 		nextScreen.setTouchable(Touchable.disabled);
 		nextScreen.show();
 		stage.addActor(nextScreen);
@@ -250,6 +258,13 @@ public abstract class BaseGame implements ApplicationListener
 			currentScreen.screenOut();
 			currentScreen.setTouchable(Touchable.disabled);
 			currentScreen.toFront();
+
+			if (nextScreen.getInputProcessor() != null)
+			{
+				Gdx.app.debug("Input", "Remove input processor!");
+				inputs.removeProcessor(currentScreen.getInputProcessor());
+			}
+
 		}
 	}
 
