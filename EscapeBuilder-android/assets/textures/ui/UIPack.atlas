@@ -7,8 +7,8 @@ TextButton
   rotate: false
   xy: 96, 12
   size: 48, 48
-  split: 14, 15, 10, 31
-  pad: 14, 15, 17, 17
+  split: 16, 17, 10, 31
+  pad: 15, 16, 17, 17
   orig: 48, 48
   offset: 0, 0
   index: -1

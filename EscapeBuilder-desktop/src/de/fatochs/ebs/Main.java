@@ -16,8 +16,10 @@ public class Main {
 		Settings settings = new Settings();
         settings.maxWidth = 512;
         settings.maxHeight = 512;
-        TexturePacker.process(settings, "C:\\Users\\Frotty\\Documents\\GitHub\\EscapeBuilderStandalone\\EscapeBuilder-android\\assets\\textures\\ui\\images\\done",
-        		"C:\\Users\\Frotty\\Documents\\GitHub\\EscapeBuilderStandalone\\EscapeBuilder-android\\assets\\textures\\ui\\", "UIPack");
+        settings.debug = true;
+        settings.pot = false;
+        TexturePacker.process(settings, "../EscapeBuilder-android/assets/textures/ui/images/done",
+        		"../EscapeBuilder-android/assets/textures/ui/", "UIPack");
 		new LwjglApplication(new EBGame(), cfg);
 	}
 }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.List.ListStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
@@ -27,7 +28,8 @@ public class Styles
 
 	public void styleSkin(final Skin skin, final TextureAtlas atlas)
 	{
-		final BitmapFont font = new BitmapFont(Gdx.files.internal("data/trajan.fnt"), false);
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("data/Trajan_Bold.ttf"));
+		final BitmapFont font = generator.generateFont(36);
 		font.setColor(Color.WHITE);
 		skin.add("default", font);
 

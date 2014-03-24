@@ -58,7 +58,7 @@ public class NewMazeScreen extends BaseScreen
 		sizeTable.add(ySizeLabel);sizeTable.add(ySizeField);
 
 		defaults().pad(6f);
-		setBackground(UiFactory.drawable("window1"));
+		setBackground(UiFactory.drawable("bg"));
 		setColor(UiFactory.color("lt-blue"));
 		add(nameLabel);
 		add(nameField).width(150);

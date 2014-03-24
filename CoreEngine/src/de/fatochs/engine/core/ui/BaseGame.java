@@ -102,8 +102,8 @@ public abstract class BaseGame implements ApplicationListener
 
 		stage = new Stage(width, height, false);
 
-
 		atlas = new TextureAtlas(atlasPath());
+
 		skin = new Skin();
 		skin.addRegions(atlas);
 

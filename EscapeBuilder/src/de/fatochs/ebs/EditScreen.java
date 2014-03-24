@@ -48,7 +48,7 @@ public class EditScreen extends BaseScreen
 		});
 
 		defaults().pad(6f);
-		setBackground(UiFactory.drawable("window1"));
+		setBackground(UiFactory.drawable("bg"));
 		setColor(UiFactory.color("lt-blue"));
 		add(newButton);
 		row();
