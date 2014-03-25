@@ -12,11 +12,11 @@ public enum TileInformation
 	/**
 	 * The Escaper can walk normally on here
 	 */
-	WALKABLE(new TileSet(EBGame.textureAtlas.findRegion("TilePath")));
-	// /**
-	// * The Escaper dies when walking on here
-	// */
-	// UNWALKABLE(new TileSet(EBGame.textureAtlas.findRegion("Unwalkable"))),
+	PATH(new TileSet(EBGame.textureAtlas.findRegion("TilePath"))),
+	 /**
+	 * The Escaper dies when walking on here
+	 */
+	VOID(new TileSet(EBGame.textureAtlas.findRegion("TileVoid")));
 	// /**
 	// * The escaper slides on here, but can control his momentum/rotation
 	// */

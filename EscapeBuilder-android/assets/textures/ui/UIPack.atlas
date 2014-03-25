@@ -3,22 +3,48 @@ UIPack.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+BlackDown
+  rotate: false
+  xy: 227, 46
+  size: 1, 14
+  split: 0, 0, 0, 0
+  orig: 1, 14
+  offset: 0, 0
+  index: -1
+Knob
+  rotate: false
+  xy: 193, 5
+  size: 21, 21
+  split: 8, 7, 7, 8
+  pad: 0, 0, 0, 0
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
 TextButton
   rotate: false
-  xy: 96, 12
-  size: 48, 48
-  split: 16, 17, 10, 31
-  pad: 15, 16, 17, 17
-  orig: 48, 48
+  xy: 145, 14
+  size: 46, 46
+  split: 10, 10, 10, 10
+  pad: 12, 12, 12, 12
+  orig: 46, 46
   offset: 0, 0
   index: -1
 TextField
   rotate: false
-  xy: 146, 13
+  xy: 96, 13
   size: 47, 47
   split: 9, 9, 9, 9
   pad: 10, 10, 10, 10
   orig: 47, 47
+  offset: 0, 0
+  index: -1
+WindowClear
+  rotate: false
+  xy: 193, 28
+  size: 32, 32
+  split: 7, 7, 7, 7
+  pad: 6, 6, 6, 6
+  orig: 32, 32
   offset: 0, 0
   index: -1
 bg

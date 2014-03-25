@@ -22,7 +22,7 @@ public class EBGame extends BaseGame
 	protected void createMe()
 	{
 		Gdx.app.setLogLevel(Logger.DEBUG);
-		textureAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles/packed/EBSPack.pack"));
+		textureAtlas = new TextureAtlas(Gdx.files.internal("textures/tiles/packed/TilesPack.pack"));
 	}
 
 	@Override
@@ -71,6 +71,13 @@ public class EBGame extends BaseGame
 	protected BaseScreen getFirstScreen()
 	{
 		return new MainScreen(this);
+	}
+	
+	@Override
+	public void resize(final int width, final int height)
+	{
+		super.resize(width, height);
+		currentScreen.resize(width, height);
 	}
 
 }

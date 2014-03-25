@@ -18,7 +18,9 @@ import de.fatochs.engine.core.ui.UiFactory;
  */
 public class MainScreen extends BaseScreen
 {
-
+	final TextButton playButton;
+	final TextButton editButton;
+	final TextButton exitButton;
 	/**
 	 * @param game
 	 */
@@ -26,7 +28,7 @@ public class MainScreen extends BaseScreen
 	{
 		super(game);
 
-		final TextButton playButton = UiFactory.textButton("Play");
+		playButton = UiFactory.textButton("Play");
 
 		playButton.addListener(new ClickListener()
 		{
@@ -38,7 +40,7 @@ public class MainScreen extends BaseScreen
 			}
 		});
 
-		final TextButton editButton = UiFactory.textButton("Edit");
+		editButton = UiFactory.textButton("Edit");
 
 		editButton.addListener(new ClickListener()
 		{
@@ -50,7 +52,7 @@ public class MainScreen extends BaseScreen
 			}
 		});
 
-		final TextButton exitButton = UiFactory.textButton("Exit");
+		exitButton = UiFactory.textButton("Exit");
 
 		exitButton.addListener(new ClickListener()
 		{
@@ -71,7 +73,19 @@ public class MainScreen extends BaseScreen
 		add(exitButton).size(0.6f * game.width, 0.2f * game.height);
 	}
 	
-	
+	@Override
+	public void resize(final int width, final int height)
+	{
+		clear();
+		defaults().pad(6f);
+		setBackground(UiFactory.drawable("bg"));
+		setColor(UiFactory.color("lt-blue"));
+		add(playButton).size(0.6f * game.width, 0.2f * game.height);
+		row();
+		add(editButton).size(0.6f * game.width, 0.2f * game.height);
+		row();
+		add(exitButton).size(0.6f * game.width, 0.2f * game.height);
+	}
 
 	/*
 	 * (non-Javadoc)

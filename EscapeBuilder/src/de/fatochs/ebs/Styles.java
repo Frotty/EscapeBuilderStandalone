@@ -39,6 +39,9 @@ public class Styles
 
 		final NinePatchDrawable textButtonPatch = new NinePatchDrawable(atlas.createPatch("TextButton"));
 		final NinePatchDrawable textFieldPatch = new NinePatchDrawable(atlas.createPatch("TextField"));
+		final NinePatchDrawable windowClearPatch = new NinePatchDrawable(atlas.createPatch("WindowClear"));
+		final NinePatchDrawable knobPatch = new NinePatchDrawable(atlas.createPatch("Knob"));
+		final NinePatchDrawable blackDownPatch = new NinePatchDrawable(atlas.createPatch("BlackDown"));
 		skin.add("textButton", textButtonPatch);
 		skin.add("textField", textFieldPatch);
 //		skin.add("white-pixel", atlas.findRegion("white-pixel"), TextureRegion.class);
@@ -56,12 +59,12 @@ public class Styles
 		tbs.pressedOffsetY = tbs.pressedOffsetX * -1f;
 		skin.add("default", tbs);
 		;
-		final TextFieldStyle tfs = new TextFieldStyle(font, Color.BLACK, textFieldPatch, textFieldPatch
+		final TextFieldStyle tfs = new TextFieldStyle(font, Color.BLACK, blackDownPatch, textFieldPatch
 				, textFieldPatch);
 		skin.add("default", tfs);
 		
-		final ScrollPaneStyle sps = new ScrollPaneStyle(textFieldPatch, textFieldPatch, textFieldPatch, textFieldPatch, textFieldPatch);
-		final ListStyle ls = new ListStyle(font, Color.BLACK, Color.GRAY, textButtonPatch);
+		final ScrollPaneStyle sps = new ScrollPaneStyle(windowClearPatch, windowClearPatch, knobPatch, windowClearPatch, knobPatch);
+		final ListStyle ls = new ListStyle(font, Color.BLACK, Color.GRAY, windowClearPatch);
 		
 		final SelectBoxStyle sbs = new SelectBoxStyle(font, Color.BLACK, textFieldPatch, sps, ls);
 		skin.add("default", sbs);

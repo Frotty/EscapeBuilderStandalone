@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-    <classpathentry kind="src" path="src"/>
-    <classpathentry combineaccessrules="false" kind="src" path="/EscapeBuilder"/>
-    <classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
-    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-    <classpathentry combineaccessrules="false" kind="src" path="/CoreEngine"/>
-    <classpathentry kind="output" path="war/WEB-INF/classes"/>
-    <classpathentry kind="lib" path="war/WEB-INF/lib/gdx-backend-gwt-sources.jar"/>
-    <classpathentry kind="lib" path="war/WEB-INF/lib/gdx-backend-gwt.jar" sourcepath="war/WEB-INF/lib/gdx-backend-gwt-sources.jar"/>
-    <classpathentry kind="lib" path="/EscapeBuilder/libs/gdx-sources.jar"/>
-    <classpathentry kind="lib" path="/EscapeBuilder/libs/gdx.jar" sourcepath="/EscapeBuilder/libs/gdx-sources.jar"/>
-    <classpathentry kind="lib" path="/EscapeBuilder/libs/tween-engine-api-sources.jar"/>
-    <classpathentry kind="lib" path="/EscapeBuilder/libs/tween-engine-api.jar" sourcepath="/EscapeBuilder/libs/tween-engine-api-sources.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/EscapeBuilder"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CoreEngine"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gdx-backend-gwt-sources.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gdx-backend-gwt.jar" sourcepath="war/WEB-INF/lib/gdx-backend-gwt-sources.jar"/>
+	<classpathentry kind="lib" path="/EscapeBuilder/libs/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="/EscapeBuilder/libs/gdx.jar" sourcepath="/EscapeBuilder/libs/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="/EscapeBuilder/libs/tween-engine-api-sources.jar"/>
+	<classpathentry kind="lib" path="/EscapeBuilder/libs/tween-engine-api.jar" sourcepath="/EscapeBuilder/libs/tween-engine-api-sources.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-servlet.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

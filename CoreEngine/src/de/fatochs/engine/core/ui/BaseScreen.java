@@ -139,4 +139,8 @@ public abstract class BaseScreen extends Table
 	{
 		return null;
 	}
+
+	public void resize(int width, int height) {
+		
+	}
 }

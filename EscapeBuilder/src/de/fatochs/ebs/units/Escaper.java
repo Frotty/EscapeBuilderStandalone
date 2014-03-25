@@ -83,7 +83,7 @@ public class Escaper extends SpriteEntity
 			// break;
 			// case UNWALKABLE:
 			// kill();
-			case WALKABLE:
+			case PATH:
 				if (isMoving)
 				{
 					move((int) (Gdx.input.getX() / 0.6), (int) (Gdx.graphics.getHeight() / 0.6 - Gdx.input.getY() / 0.6));

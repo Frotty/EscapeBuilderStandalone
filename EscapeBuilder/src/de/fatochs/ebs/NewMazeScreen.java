@@ -40,7 +40,7 @@ public class NewMazeScreen extends BaseScreen
 		final TextField ySizeField = UiFactory.textField("");
 		final Label startTileLabel = UiFactory.label("Starting Tile: ");
 		final SelectBox<TileInformation> startTileBox = UiFactory.selectBox();
-		startTileBox.setItems(TileInformation.WALKABLE);
+		startTileBox.setItems(TileInformation.PATH);
 		final TextButton createButton = UiFactory.textButton("Create");
 
 		createButton.addListener(new ClickListener()

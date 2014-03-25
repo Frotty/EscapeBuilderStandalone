@@ -1,15 +1,18 @@
 package de.fatochs.ebs.maze;
 
-import static de.fatochs.ebs.maze.TileInformation.WALKABLE;
+import static de.fatochs.ebs.maze.TileInformation.PATH;
 
+import java.lang.Character.UnicodeScript;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
 
 import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.JsonWriter.OutputType;
@@ -49,22 +52,58 @@ public class Maze extends TiledMap implements Json.Serializable
 	{
 		this.name = name;
 		final MapLayers layers = getLayers();
-
+		final Random	rand			= new Random();
 		final TiledMapTileLayer layer = new TiledMapTileLayer(20, 20, tileSize, tileSize);
 
 		for (int x = 0; x < layer.getWidth(); x++)
 		{
 			for (int y = 0; y < layer.getHeight(); y++)
 			{
-				final Cell cell = new Cell();
-				cell.setTile(new Tile(WALKABLE));
-				layer.setCell(x, y, cell);
+				System.out.println(rand.nextInt(2));
+				System.out.println(rand.nextInt(2));
+				System.out.println(rand.nextInt(2));
+				System.out.println(rand.nextInt(2));
+				System.out.println(rand.nextInt(2));
+				System.out.println(rand.nextInt(2));
+				System.out.println(rand.nextInt(2));
+				System.out.println(rand.nextInt(2));
+				switch (rand.nextInt(2))
+				{
+				case 0:
+					final Cell cell = new Cell();
+					cell.setTile(new Tile(PATH));
+					layer.setCell(x, y, cell);
+					break;
+				case 1:
+					final Cell cell2 = new Cell();
+					cell2.setTile(new Tile(TileInformation.VOID));
+					layer.setCell(x, y, cell2);
+					break;
+				default:
+					throw new GdxRuntimeException("Invalid Random Value");
+				}
+				
 			}
 		}
-
+		
+		for (int x = 0; x < layer.getWidth(); x++)
+		{
+			for (int y = 0; y < layer.getHeight(); y++)
+			{
+				Cell c = layer.getCell(x, y);
+				Tile t = (Tile) c.getTile();
+				t.findCorrectTile(x<layer.getWidth()-1 ? ((Tile) layer.getCell(x+1, y).getTile()) : null
+						, y>0 ? ((Tile) layer.getCell(x, y-1).getTile()) : null
+						, x>0 ? ((Tile) layer.getCell(x-1, y).getTile()) : null
+						, y<layer.getHeight()-1 ? ((Tile) layer.getCell(x, y+1).getTile()) : null);
+				c.setTile(t);
+				layer.setCell(x, y, c);
+				
+			}
+		}
+		layers.add(layer);
 		name = "testName";
 
-		layers.add(layer);
 	}
 
 	public void save()
