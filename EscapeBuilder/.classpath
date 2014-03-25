@@ -10,7 +10,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="EscapeBuilder/natives"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/gdx-freetype-natives.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CoreEngine"/>
-	<classpathentry kind="lib" path="natives/gdx-freetype-natives.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
