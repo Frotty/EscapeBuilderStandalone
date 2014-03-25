@@ -10,7 +10,6 @@
 	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/EscapeBuilder/libs/gdx.jar" sourcepath="/EscapeBuilder/libs/gdx-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/EscapeBuilder/libs/tween-engine-api.jar" sourcepath="/EscapeBuilder/libs/tween-engine-api-sources.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-freetype-natives.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-freetype.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-freetype.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
