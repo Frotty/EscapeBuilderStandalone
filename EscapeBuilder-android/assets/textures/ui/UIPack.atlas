@@ -5,15 +5,22 @@ filter: Nearest,Nearest
 repeat: none
 BlackDown
   rotate: false
-  xy: 227, 46
+  xy: 68, 4
   size: 1, 14
   split: 0, 0, 0, 0
   orig: 1, 14
   offset: 0, 0
   index: -1
+Grid
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 Knob
   rotate: false
-  xy: 193, 5
+  xy: 116, 22
   size: 21, 21
   split: 8, 7, 7, 8
   pad: 0, 0, 0, 0
@@ -22,7 +29,7 @@ Knob
   index: -1
 TextButton
   rotate: false
-  xy: 145, 14
+  xy: 68, 20
   size: 46, 46
   split: 10, 10, 10, 10
   pad: 12, 12, 12, 12
@@ -31,7 +38,7 @@ TextButton
   index: -1
 TextField
   rotate: false
-  xy: 96, 13
+  xy: 96, 79
   size: 47, 47
   split: 9, 9, 9, 9
   pad: 10, 10, 10, 10
@@ -40,7 +47,7 @@ TextField
   index: -1
 WindowClear
   rotate: false
-  xy: 193, 28
+  xy: 116, 45
   size: 32, 32
   split: 7, 7, 7, 7
   pad: 6, 6, 6, 6
@@ -49,7 +56,7 @@ WindowClear
   index: -1
 bg
   rotate: false
-  xy: 2, 2
+  xy: 2, 68
   size: 92, 58
   orig: 92, 58
   offset: 0, 0

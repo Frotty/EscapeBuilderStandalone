@@ -33,7 +33,7 @@ public abstract class BaseGame implements ApplicationListener
 	/**
 	 * The UI texture atlas.
 	 */
-	protected TextureAtlas			atlas;
+	private TextureAtlas			atlas;
 	/**
 	 * The UI skin.
 	 */
@@ -104,10 +104,10 @@ public abstract class BaseGame implements ApplicationListener
 
 		stage = new Stage(width, height, false);
 
-		atlas = new TextureAtlas(atlasPath());
+		setAtlas(new TextureAtlas(atlasPath()));
 
 		skin = new Skin();
-		skin.addRegions(atlas);
+		skin.addRegions(getAtlas());
 
 		// Adds all recourses from a skin file, if it exists.
 		final String skinPath = skinPath();
@@ -115,7 +115,7 @@ public abstract class BaseGame implements ApplicationListener
 		{
 			skin.load(Gdx.files.internal(skinPath));
 		}
-		styleSkin(skin, atlas);
+		styleSkin(skin, getAtlas());
 
 		UiFactory.initialize(skin);
 
@@ -294,6 +294,14 @@ public abstract class BaseGame implements ApplicationListener
 	{
 		stage.dispose();
 		skin.dispose();
-		atlas.dispose();
+		getAtlas().dispose();
+	}
+
+	public TextureAtlas getAtlas() {
+		return atlas;
+	}
+
+	public void setAtlas(TextureAtlas atlas) {
+		this.atlas = atlas;
 	}
 }

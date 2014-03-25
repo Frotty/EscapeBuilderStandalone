@@ -26,7 +26,7 @@ public class NewMazeScreen extends BaseScreen
 	/**
 	 * @param game
 	 */
-	public NewMazeScreen(BaseGame game)
+	public NewMazeScreen(final BaseGame game)
 	{
 		super(game);
 		final Label nameLabel = UiFactory.label("Maze Name: ");
@@ -48,8 +48,8 @@ public class NewMazeScreen extends BaseScreen
 			@Override
 			public void clicked(final InputEvent event, final float x, final float y)
 			{
-				// TODO Implement method
-				throw new UnsupportedOperationException();
+				game.switchScreens(new EditorScreen(game));
+				createButton.setChecked(false);
 			}
 		});
 		Table sizeTable = new Table();
